@@ -1,0 +1,100 @@
+{
+  "schema_version": 2,
+  "rules_version": "v1",
+  "source": {
+    "type": "claude_code",
+    "model": "claude-code"
+  },
+  "generated_at": "2026-11-21T09:00:00",
+  "results": [
+    {
+      "dialog_id": "D006",
+      "player_id": "P1006",
+      "manager_id": "Алина",
+      "analysis": {
+        "profile": {
+          "summary": "Регулярный VIP-игрок. Депозитная активность снизилась, есть риск оттока."
+        },
+        "quality": {
+          "tone": 35,
+          "empathy": 20,
+          "engagement": 70,
+          "personalization": 70,
+          "problem_understanding": 70,
+          "completeness": 70,
+          "follow_up": 20,
+          "next_steps_clarity": 70,
+          "overall": 30,
+          "summary": "Шаблонные ответы без статуса и следующего шага."
+        },
+        "player_points": [
+          {
+            "message_id": "D006#1",
+            "dissatisfaction": 60,
+            "state": "dissatisfaction"
+          },
+          {
+            "message_id": "D006#3",
+            "dissatisfaction": 80,
+            "state": "irritation"
+          },
+          {
+            "message_id": "D006#5",
+            "dissatisfaction": 85,
+            "state": "disappointment"
+          }
+        ],
+        "manager_points": [
+          {
+            "message_id": "D006#2",
+            "engagement": 30
+          },
+          {
+            "message_id": "D006#4",
+            "engagement": 20
+          }
+        ],
+        "rg": {
+          "signal": "none",
+          "handled": "not_applicable",
+          "message_refs": []
+        },
+        "risk_flags": [
+          "chargeback_threat"
+        ],
+        "violations": [
+          {
+            "title": "Игнор упоминания чарджбэка",
+            "category": "operational",
+            "code": "NO_ESCALATION",
+            "severity": "high",
+            "explanation": "Менеджер не эскалировал вопрос после упоминания чарджбэка.",
+            "message_refs": [
+              "D006#4"
+            ]
+          },
+          {
+            "title": "Сухой шаблонный тон",
+            "category": "communication",
+            "code": "DRY_TONE",
+            "severity": "medium",
+            "explanation": "Шаблонные ответы без признания ситуации игрока.",
+            "message_refs": [
+              "D006#2",
+              "D006#4"
+            ]
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "Эскалировать вывод в платежи и сообщить игроку статус и срок",
+            "kind": "service",
+            "message_refs": [
+              "D006#4"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

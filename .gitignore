@@ -1,0 +1,17 @@
+.env
+config/settings.json
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+data/current/
+results/
+
+# данные игроков, переписки и результаты анализа
+/dialogs.json
+/players.csv
+/analysis_results.json
+cache/
+*.docx
+CLAUDE.md

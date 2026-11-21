@@ -1,0 +1,526 @@
+{
+  "$defs": {
+    "Analysis": {
+      "properties": {
+        "profile": {
+          "$ref": "#/$defs/PlayerProfile"
+        },
+        "quality": {
+          "$ref": "#/$defs/CommQuality"
+        },
+        "player_points": {
+          "items": {
+            "$ref": "#/$defs/PlayerPoint"
+          },
+          "title": "Player Points",
+          "type": "array"
+        },
+        "manager_points": {
+          "items": {
+            "$ref": "#/$defs/ManagerPoint"
+          },
+          "title": "Manager Points",
+          "type": "array"
+        },
+        "rg": {
+          "$ref": "#/$defs/Rg"
+        },
+        "risk_flags": {
+          "items": {
+            "enum": [
+              "chargeback_threat",
+              "churn_threat"
+            ],
+            "type": "string"
+          },
+          "title": "Risk Flags",
+          "type": "array"
+        },
+        "violations": {
+          "items": {
+            "$ref": "#/$defs/Violation"
+          },
+          "title": "Violations",
+          "type": "array"
+        },
+        "recommendations": {
+          "items": {
+            "$ref": "#/$defs/Recommendation"
+          },
+          "title": "Recommendations",
+          "type": "array"
+        }
+      },
+      "required": [
+        "profile",
+        "quality",
+        "player_points",
+        "manager_points",
+        "rg",
+        "risk_flags",
+        "violations",
+        "recommendations"
+      ],
+      "title": "Analysis",
+      "type": "object"
+    },
+    "CommQuality": {
+      "properties": {
+        "tone": {
+          "anyOf": [
+            {
+              "maximum": 100,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Tone"
+        },
+        "empathy": {
+          "anyOf": [
+            {
+              "maximum": 100,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Empathy"
+        },
+        "engagement": {
+          "anyOf": [
+            {
+              "maximum": 100,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Engagement"
+        },
+        "personalization": {
+          "anyOf": [
+            {
+              "maximum": 100,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Personalization"
+        },
+        "problem_understanding": {
+          "anyOf": [
+            {
+              "maximum": 100,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Problem Understanding"
+        },
+        "completeness": {
+          "anyOf": [
+            {
+              "maximum": 100,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Completeness"
+        },
+        "follow_up": {
+          "anyOf": [
+            {
+              "maximum": 100,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Follow Up"
+        },
+        "next_steps_clarity": {
+          "anyOf": [
+            {
+              "maximum": 100,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Next Steps Clarity"
+        },
+        "overall": {
+          "maximum": 100,
+          "minimum": 0,
+          "title": "Overall",
+          "type": "integer"
+        },
+        "summary": {
+          "title": "Summary",
+          "type": "string"
+        }
+      },
+      "required": [
+        "overall",
+        "summary"
+      ],
+      "title": "CommQuality",
+      "type": "object"
+    },
+    "ImportResult": {
+      "properties": {
+        "dialog_id": {
+          "title": "Dialog Id",
+          "type": "string"
+        },
+        "player_id": {
+          "title": "Player Id",
+          "type": "string"
+        },
+        "manager_id": {
+          "title": "Manager Id",
+          "type": "string"
+        },
+        "analysis": {
+          "$ref": "#/$defs/Analysis"
+        },
+        "meta": {
+          "anyOf": [
+            {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Meta"
+        }
+      },
+      "required": [
+        "dialog_id",
+        "player_id",
+        "manager_id",
+        "analysis"
+      ],
+      "title": "ImportResult",
+      "type": "object"
+    },
+    "ManagerPoint": {
+      "properties": {
+        "message_id": {
+          "title": "Message Id",
+          "type": "string"
+        },
+        "engagement": {
+          "maximum": 100,
+          "minimum": 0,
+          "title": "Engagement",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "message_id",
+        "engagement"
+      ],
+      "title": "ManagerPoint",
+      "type": "object"
+    },
+    "PlayerPoint": {
+      "properties": {
+        "message_id": {
+          "title": "Message Id",
+          "type": "string"
+        },
+        "dissatisfaction": {
+          "maximum": 100,
+          "minimum": 0,
+          "title": "Dissatisfaction",
+          "type": "integer"
+        },
+        "state": {
+          "enum": [
+            "neutral",
+            "irritation",
+            "dissatisfaction",
+            "disappointment",
+            "detachment",
+            "positive",
+            "formal_agreement",
+            "resolved"
+          ],
+          "title": "State",
+          "type": "string"
+        }
+      },
+      "required": [
+        "message_id",
+        "dissatisfaction",
+        "state"
+      ],
+      "title": "PlayerPoint",
+      "type": "object"
+    },
+    "PlayerProfile": {
+      "properties": {
+        "summary": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Summary"
+        }
+      },
+      "title": "PlayerProfile",
+      "type": "object"
+    },
+    "Recommendation": {
+      "properties": {
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "protective",
+            "service",
+            "commercial",
+            "coaching"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "message_refs": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Message Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "text",
+        "kind",
+        "message_refs"
+      ],
+      "title": "Recommendation",
+      "type": "object"
+    },
+    "Rg": {
+      "properties": {
+        "signal": {
+          "enum": [
+            "none",
+            "self_exclusion_request",
+            "loss_of_control",
+            "serious_harm",
+            "self_harm_risk",
+            "ambiguous_distress"
+          ],
+          "title": "Signal",
+          "type": "string"
+        },
+        "handled": {
+          "enum": [
+            "yes",
+            "partly",
+            "no",
+            "not_applicable"
+          ],
+          "title": "Handled",
+          "type": "string"
+        },
+        "message_refs": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Message Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "signal",
+        "handled",
+        "message_refs"
+      ],
+      "title": "Rg",
+      "type": "object"
+    },
+    "SourceInfo": {
+      "properties": {
+        "type": {
+          "enum": [
+            "claude_code",
+            "app"
+          ],
+          "title": "Type",
+          "type": "string"
+        },
+        "model": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Model"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "title": "SourceInfo",
+      "type": "object"
+    },
+    "Violation": {
+      "properties": {
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "category": {
+          "enum": [
+            "rg_safety",
+            "operational",
+            "communication"
+          ],
+          "title": "Category",
+          "type": "string"
+        },
+        "code": {
+          "enum": [
+            "IGNORED_SELF_EXCLUSION",
+            "IGNORED_HARM_SIGNAL",
+            "INCENTIVE_AFTER_STOP_REQUEST",
+            "FALSE_PROMISE",
+            "CHASING_INCENTIVE",
+            "MISINFORMATION",
+            "UNRESOLVED_REQUEST",
+            "NO_ESCALATION",
+            "BONUS_RULE_BREACH",
+            "CONSENT_BREACH",
+            "COMPLIANCE_RISK",
+            "LOW_EMPATHY",
+            "DRY_TONE",
+            "RUDE_TONE",
+            "INCOMPLETE_ANSWER",
+            "NO_FOLLOW_UP",
+            "SLOW_RESPONSE",
+            "PERSONALIZATION_ERROR"
+          ],
+          "title": "Code",
+          "type": "string"
+        },
+        "severity": {
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "critical"
+          ],
+          "title": "Severity",
+          "type": "string"
+        },
+        "explanation": {
+          "title": "Explanation",
+          "type": "string"
+        },
+        "message_refs": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Message Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "title",
+        "category",
+        "code",
+        "severity",
+        "explanation",
+        "message_refs"
+      ],
+      "title": "Violation",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "schema_version": {
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "rules_version": {
+      "title": "Rules Version",
+      "type": "string"
+    },
+    "source": {
+      "$ref": "#/$defs/SourceInfo"
+    },
+    "generated_at": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Generated At"
+    },
+    "results": {
+      "items": {
+        "$ref": "#/$defs/ImportResult"
+      },
+      "title": "Results",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "rules_version",
+    "source",
+    "results"
+  ],
+  "title": "ImportFile",
+  "type": "object"
+}
