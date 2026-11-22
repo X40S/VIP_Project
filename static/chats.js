@@ -10,6 +10,10 @@
     settings: null, cost: null, open: ls.get("open", "") === "1", group: ls.get("group", "none") };
   st.sel = ls.get("sel", "") || null;
   const setOpen = (v) => { st.open = v; ls.set("open", v ? "1" : "0"); };
+  // диалоги, результат которых открыт по отдельности (когда общий анализ ещё не открыт)
+  const shown = new Set((() => { try { return JSON.parse(ls.get("shown", "[]")); } catch (e) { return []; } })());
+  const isShown = (id) => st.open || shown.has(id);
+  const showOne = (ids) => { ids.forEach((i) => shown.add(i)); ls.set("shown", JSON.stringify([...shown])); };
   // пока анализ не открыт (localStorage пуст), показываем пустой Dashboard, серверные результаты не затрагиваются
   const BLANK = { analysis_status: "missing", stale_reasons: [], priority: null, overall: null, violations: null, source: null, rg_signal: null };
   const RANK = { critical: 0, high: 1, medium: 2, low: 3 };
@@ -42,7 +46,7 @@
 
   /* ---------- данные ---------- */
   async function loadList() {
-    try { const r = await api("/api/dialogs"); st.items = st.open ? r.items : r.items.map((i) => ({ ...i, ...BLANK })); st.meta = r; }
+    try { const r = await api("/api/dialogs"); st.items = r.items.map((i) => (isShown(i.dialog_id) ? i : { ...i, ...BLANK })); st.meta = r; }
     catch (e) { toast(e.message, true); }
   }
   const loadData = async () => { try { st.data = await api("/api/data"); } catch (e) { /* не критично */ } };
@@ -84,7 +88,7 @@
       $("#f-dialogs").addEventListener("change", (e) => pickUpload("dialogs", e.target.files[0]));
       $("#f-players").addEventListener("change", (e) => pickUpload("players", e.target.files[0]));
       $("#upload").addEventListener("click", applyUpload);
-      $("#run").addEventListener("click", openRunModal);
+      $("#run").addEventListener("click", () => openRunModal());
       paintUploadStatus(); renderJob(); paintRun();
     } else {
       $("#f-import").addEventListener("change", (e) => pickImport(e.target.files[0]));
@@ -160,11 +164,11 @@
   }
 
   /* ---------- запуск анализа (с подтверждением) ---------- */
-  async function openRunModal() {
+  async function openRunModal(only) {
     const m = modal('<div class="muted">Считаю оценку...</div>');
     const render = async (incl) => {
       let est;
-      try { est = await api("/api/analyze-estimate", { method: "POST", body: { force: incl } }); }
+      try { est = await api("/api/analyze-estimate", { method: "POST", body: { force: incl, dialog_ids: only } }); }
       catch (e) { m.el.innerHTML = `<div class="status-msg err">${esc(e.message)}</div>`; return; }
       const prov = st.settings?.providers[est.provider]?.label || est.provider;
       const cost = est.cost_usd != null ? `≈ $${est.cost_usd}` : esc(est.note || "");
@@ -183,10 +187,12 @@
       const cb = $("#incl", m.el); if (cb) cb.addEventListener("change", () => render(cb.checked));
       $("#go", m.el).addEventListener("click", async () => {
         m.close();
-        try { st.job = await api("/api/analyze-all", { method: "POST", body: { force: incl } }); }
+        try { st.job = await api("/api/analyze-all", { method: "POST", body: { force: incl, dialog_ids: only } }); }
         catch (e) { return toast(e.message, true); }
-        setOpen(true); await loadList(); renderTab();
+        if (only) showOne(only); else setOpen(true);
+        await loadList(); renderTab();
         renderJob(); attachJob(true);
+        if (st.sel) await selectDialog(st.sel);
       });
     };
     render(false);
@@ -241,11 +247,12 @@
     const box = $("#list"); if (!box) return;
     const q = st.search;
     const rows = sorted().filter((i) => !q || `${i.player_id} ${i.dialog_id} ${i.manager}`.toLowerCase().includes(q));
+    const busy = new Set(st.job?.status === "running" ? st.job.pending || [] : []);
     const item = (i) => `
-      <div class="item ${i.dialog_id === st.sel ? "sel" : ""}" data-id="${i.dialog_id}">
+      <div class="item ${i.dialog_id === st.sel ? "sel" : ""}${busy.has(i.dialog_id) ? " busy" : ""}" data-id="${i.dialog_id}">
         <span class="dot ${i.priority || ""}" title="${esc(PRIORITY[i.priority]?.[0] || "Не проанализирован")}"></span>
         <div><div class="t">${chIcon(i.channel)} ${esc(i.player_id)} <span class="m">${esc(i.dialog_id)}</span></div>
-        <div class="m">${esc(i.manager)}${i.overall != null ? ` · оценка ${i.overall}` : ""}${i.analysis_status === "stale" ? ` · <span style="color:var(--amber)">${esc(i.stale_reasons.map((r) => r.label).join(", "))}</span>` : ""}${i.analysis_status === "missing" ? " · нет анализа" : ""}</div></div>
+        <div class="m">${esc(i.manager)}${busy.has(i.dialog_id) ? " · <span style=\"color:var(--amber)\">обновляется...</span>" : i.overall != null ? ` · оценка ${i.overall}` : ""}${i.analysis_status === "stale" ? ` · <span style="color:var(--amber)">${esc(i.stale_reasons.map((r) => r.label).join(", "))}</span>` : ""}${i.analysis_status === "missing" ? " · нет анализа" : ""}</div></div>
       </div>`;
     const gf = GROUPS[st.group]?.[1];
     if (!gf) box.innerHTML = rows.map(item).join("");
@@ -262,7 +269,7 @@
   async function selectDialog(id) {
     st.sel = id; ls.set("sel", id); renderList();
     try { st.detail = await api("/api/dialogs/" + id); } catch (e) { return toast(e.message, true); }
-    if (!st.open) { st.detail.record = null; st.detail.freshness = { status: "missing", reasons: [] }; }
+    if (!isShown(st.detail.dialog.dialog_id)) { st.detail.record = null; st.detail.freshness = { status: "missing", reasons: [] }; }
     renderDetail();
   }
 
@@ -330,7 +337,7 @@
         ${playerCard(D)}
       </div></div>`;
 
-    $("#reanalyze").addEventListener("click", () => runOne(d.dialog_id));
+    $("#reanalyze").addEventListener("click", () => openRunModal([d.dialog_id]));
     el.querySelectorAll("[data-goto]").forEach((n) => n.addEventListener("click", () => gotoMsg(n.dataset.goto)));
     if (a) drawChart(D, pPt, mPt);
   }
@@ -383,15 +390,5 @@
             const x = mPt[m.id]; const l = [`Вовлечённость: ${x.engagement}/100`];
             if (m.response_minutes != null) l.push(`Ответ через ${fmtMin(m.response_minutes)}`); return l; } } } } },
     });
-  }
-
-  async function runOne(id) {
-    const btn = $("#reanalyze"); btn.disabled = true; btn.innerHTML = '<span class="spin"></span>Анализ...';
-    try { const r = await api("/api/analyze/" + id, { method: "POST" }); setOpen(true); toast(`Анализ завершён${r.snapshot ? ". Сохранено: results/" + r.snapshot : ""}`); }
-    catch (e) {
-      toast(`${ERR_KIND[e.kind] || "Ошибка"}: ${e.message}`, true);
-      if (e.kind === "config" || e.kind === "auth") setTimeout(() => (location.hash = "#/settings"), 1500);
-    }
-    await loadList(); renderList(); loadCost(); await selectDialog(id);
   }
 })();

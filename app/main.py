@@ -118,6 +118,7 @@ def analyze_one(dialog_id: str):
 class AnalyzeAll(BaseModel):
     include_stale: bool = False
     force: bool = False
+    dialog_ids: list[str] | None = None   # None: все диалоги, иначе только указанные
 
 
 @app.post("/api/analyze-estimate")
@@ -125,12 +126,14 @@ def analyze_estimate(body: AnalyzeAll | None = None):
     """Оценка объёма и стоимости. Запросов к AI не делает."""
     body = body or AnalyzeAll()
     cfg = settings.load()
-    ids = jobs.targets(cfg, body.include_stale, body.force)
+    only = body.dialog_ids
+    ids = jobs.targets(cfg, body.include_stale, body.force, only)
     out = estimate.estimate(ids, cfg)
     out["has_key"] = bool(cfg["api_key"])
-    new_count = len(jobs.targets(cfg, False, False))
-    out["stale_count"] = len(jobs.targets(cfg, True, False)) - new_count
-    out["analyzed_count"] = len(load_all()["order"]) - new_count   # диалоги с уже готовым результатом
+    new_count = len(jobs.targets(cfg, False, False, only))
+    scope = len(only) if only is not None else len(load_all()["order"])
+    out["stale_count"] = len(jobs.targets(cfg, True, False, only)) - new_count
+    out["analyzed_count"] = scope - new_count   # диалоги с уже готовым результатом
     out["new_count"] = new_count
     return out
 
@@ -138,7 +141,7 @@ def analyze_estimate(body: AnalyzeAll | None = None):
 @app.post("/api/analyze-all")
 def analyze_all(body: AnalyzeAll | None = None):
     body = body or AnalyzeAll()
-    return jobs.start(include_stale=body.include_stale, force=body.force)
+    return jobs.start(include_stale=body.include_stale, force=body.force, only=body.dialog_ids)
 
 
 @app.get("/api/jobs/current")

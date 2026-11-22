@@ -13,10 +13,12 @@ _guard = threading.Lock()
 _current: str | None = None
 
 
-def targets(cfg: dict, include_stale: bool = False, force: bool = False) -> list[str]:
+def targets(cfg: dict, include_stale: bool = False, force: bool = False, only: list[str] | None = None) -> list[str]:
     """Диалоги к анализу: новые, при include_stale ещё и устаревшие, при force все."""
     out = []
     for did in load_all()["order"]:
+        if only is not None and did not in only:
+            continue
         if force:
             out.append(did)
             continue
@@ -26,17 +28,17 @@ def targets(cfg: dict, include_stale: bool = False, force: bool = False) -> list
     return out
 
 
-def start(include_stale: bool = False, force: bool = False) -> dict:
+def start(include_stale: bool = False, force: bool = False, only: list[str] | None = None) -> dict:
     """Запускает фоновую задачу. Если задача уже идёт, возвращает её."""
     global _current
     with _guard:
         if _current and _jobs[_current]["status"] == "running":
             return _view(_jobs[_current])
         cfg = settings.load()
-        ids = targets(cfg, include_stale, force)
+        ids = targets(cfg, include_stale, force, only)
         job = {
             "id": uuid.uuid4().hex[:8], "status": "running" if ids else "done",
-            "total": len(ids), "done": 0, "errors": [], "active": [],
+            "total": len(ids), "pending": list(ids), "done": 0, "errors": [], "active": [],
             "started_at": time.time(), "finished_at": None if ids else time.time(),
             "aborted": False, "provider": cfg["provider"], "model": cfg["model"], "snapshot": None,
         }
@@ -62,6 +64,8 @@ def _run(job: dict, ids: list[str], cfg: dict) -> None:
             job["errors"].append({"dialog_id": did, "kind": "other", "message": str(e)[:300]})
         finally:
             job["active"].remove(did)
+            if did in job["pending"]:
+                job["pending"].remove(did)
             job["done"] += 1
 
     # Ошибки не повторяются автоматически: повтор запускает пользователь.
