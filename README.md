@@ -67,26 +67,6 @@ Gemini используется по умолчанию: у него есть б
 
 Другие провайдеры (Anthropic, OpenAI) настраиваются так же, но они платные.
 
-### Альтернатива: переменная окружения
-
-Вместо ввода в интерфейсе ключ можно задать до запуска приложения.
-
-PowerShell (Windows):
-
-```
-$env:GEMINI_API_KEY = "ваш_ключ"
-python -m uvicorn app.main:app --port 8000
-```
-
-macOS и Linux:
-
-```
-export GEMINI_API_KEY="ваш_ключ"
-python -m uvicorn app.main:app --port 8000
-```
-
-Для других провайдеров: `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`. Ключи не попадают в репозиторий.
-
 ## Использование
 
 ### Основной способ: AI-анализ
