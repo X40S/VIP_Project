@@ -40,6 +40,8 @@ input[type=text], input[type=password], input[type=number], select, textarea { b
   border-radius: 9px; padding: 8px 10px; font: inherit; width: 100%; }
 input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); }
 .list input { margin-bottom: 8px; }
+.list .ctl { display: grid; gap: 6px; margin-bottom: 8px; } .list .ctl select { width: 100%; }
+.grp { display: flex; justify-content: space-between; margin: 10px 4px 4px; color: var(--muted); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; }
 .item { display: flex; gap: 8px; align-items: center; padding: 7px 9px; border-radius: 9px; cursor: pointer; border: 1px solid transparent; }
 .item:hover { background: var(--card2); } .item.sel { background: var(--accent-soft); border-color: rgba(139,124,246,.35); }
 .item .t { font-weight: 600; } .item .m { color: var(--muted); font-size: 12px; }

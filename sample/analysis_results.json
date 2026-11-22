@@ -1,0 +1,2935 @@
+{
+  "schema_version": 2,
+  "rules_version": "v1",
+  "source": {
+    "type": "claude_code",
+    "model": "claude-sonnet-5-5"
+  },
+  "generated_at": "2026-11-21T03:15:40",
+  "results": [
+    {
+      "dialog_id": "D001",
+      "player_id": "P1001",
+      "manager_id": "Алина",
+      "analysis": {
+        "profile": {
+          "summary": "Регулярный VIP-игрок. 7 неудачных депозитов за 7 дней, сумма депозитов снизилась на 13%."
+        },
+        "quality": {
+          "tone": 55,
+          "empathy": 25,
+          "engagement": 22,
+          "personalization": 40,
+          "problem_understanding": 15,
+          "completeness": 20,
+          "follow_up": 25,
+          "next_steps_clarity": 20,
+          "overall": 18,
+          "summary": "Вместо решения платёжной проблемы предложен бонус. Проблема не передана в платежи, следующий шаг не назван."
+        },
+        "player_points": [
+          {
+            "message_id": "D001#1",
+            "dissatisfaction": 50,
+            "state": "irritation"
+          },
+          {
+            "message_id": "D001#3",
+            "dissatisfaction": 75,
+            "state": "irritation"
+          },
+          {
+            "message_id": "D001#5",
+            "dissatisfaction": 55,
+            "state": "detachment"
+          }
+        ],
+        "manager_points": [
+          {
+            "message_id": "D001#2",
+            "engagement": 20
+          },
+          {
+            "message_id": "D001#4",
+            "engagement": 25
+          }
+        ],
+        "rg": {
+          "signal": "none",
+          "handled": "not_applicable",
+          "message_refs": []
+        },
+        "risk_flags": [],
+        "violations": [
+          {
+            "title": "Бонус вместо решения проблемы с депозитом",
+            "category": "operational",
+            "code": "UNRESOLVED_REQUEST",
+            "severity": "high",
+            "explanation": "Игрок не может пополнить счёт, а менеджер предлагает бонус и торопит дедлайном.",
+            "message_refs": [
+              "D001#2",
+              "D001#4"
+            ]
+          },
+          {
+            "title": "Платёжная проблема не передана в платежи",
+            "category": "operational",
+            "code": "NO_ESCALATION",
+            "severity": "high",
+            "explanation": "При 7 неудачных депозитах менеджер списывает всё на банк и не эскалирует.",
+            "message_refs": [
+              "D001#4"
+            ]
+          },
+          {
+            "title": "Долгий ответ на платёжную проблему",
+            "category": "communication",
+            "code": "SLOW_RESPONSE",
+            "severity": "medium",
+            "explanation": "Игрок ждал первого ответа 95 минут.",
+            "message_refs": [
+              "D001#2"
+            ]
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "Передать проблему с картой в платежи и сообщить игроку результат",
+            "kind": "service",
+            "message_refs": [
+              "D001#4"
+            ]
+          },
+          {
+            "text": "Не предлагать бонус, пока не решена платёжная проблема",
+            "kind": "coaching",
+            "message_refs": [
+              "D001#2"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "dialog_id": "D002",
+      "player_id": "P1002",
+      "manager_id": "Tom",
+      "analysis": {
+        "profile": {
+          "summary": "Регулярный VIP-игрок, депозиты стабильны. 3 неудачных депозита за 7 дней."
+        },
+        "quality": {
+          "tone": 90,
+          "empathy": 85,
+          "engagement": 90,
+          "personalization": 80,
+          "problem_understanding": 95,
+          "completeness": 90,
+          "follow_up": 88,
+          "next_steps_clarity": 90,
+          "overall": 91,
+          "summary": "Быстро диагностировал проблему, дал рабочий обходной путь и предложил эскалацию. Компенсация уместна."
+        },
+        "player_points": [
+          {
+            "message_id": "D002#1",
+            "dissatisfaction": 40,
+            "state": "dissatisfaction"
+          },
+          {
+            "message_id": "D002#3",
+            "dissatisfaction": 5,
+            "state": "resolved"
+          },
+          {
+            "message_id": "D002#5",
+            "dissatisfaction": 5,
+            "state": "positive"
+          }
+        ],
+        "manager_points": [
+          {
+            "message_id": "D002#2",
+            "engagement": 90
+          },
+          {
+            "message_id": "D002#4",
+            "engagement": 85
+          }
+        ],
+        "rg": {
+          "signal": "none",
+          "handled": "not_applicable",
+          "message_refs": []
+        },
+        "risk_flags": [],
+        "violations": [],
+        "recommendations": []
+      }
+    },
+    {
+      "dialog_id": "D003",
+      "player_id": "P1003",
+      "manager_id": "Максим",
+      "analysis": {
+        "profile": {
+          "summary": "Сумма депозитов выросла на 88%, число депозитов выросло с 11 до 38 при снижении среднего чека."
+        },
+        "quality": {
+          "tone": 55,
+          "empathy": 25,
+          "engagement": 35,
+          "personalization": 40,
+          "problem_understanding": 40,
+          "completeness": 30,
+          "follow_up": 30,
+          "next_steps_clarity": 30,
+          "overall": 25,
+          "summary": "Обещан гарантированный отыгрыш, эмпатии мало. Бонус предложен вместо поддержки."
+        },
+        "player_points": [
+          {
+            "message_id": "D003#1",
+            "dissatisfaction": 70,
+            "state": "irritation"
+          },
+          {
+            "message_id": "D003#3",
+            "dissatisfaction": 90,
+            "state": "irritation"
+          },
+          {
+            "message_id": "D003#5",
+            "dissatisfaction": 60,
+            "state": "detachment"
+          }
+        ],
+        "manager_points": [
+          {
+            "message_id": "D003#2",
+            "engagement": 40
+          },
+          {
+            "message_id": "D003#4",
+            "engagement": 25
+          }
+        ],
+        "rg": {
+          "signal": "none",
+          "handled": "not_applicable",
+          "message_refs": []
+        },
+        "risk_flags": [],
+        "violations": [
+          {
+            "title": "Обещание гарантированного отыгрыша",
+            "category": "operational",
+            "code": "FALSE_PROMISE",
+            "severity": "high",
+            "explanation": "«Отыграешь всё сегодня же» обещает результат, который менеджер не контролирует.",
+            "message_refs": [
+              "D003#2"
+            ]
+          },
+          {
+            "title": "Бонус как способ вернуть проигрыш",
+            "category": "operational",
+            "code": "CHASING_INCENTIVE",
+            "severity": "medium",
+            "explanation": "Бонус подан как «шанс вернуть» проигранное.",
+            "message_refs": [
+              "D003#2",
+              "D003#4"
+            ]
+          },
+          {
+            "title": "Нет поддержки игрока после проигрыша",
+            "category": "communication",
+            "code": "LOW_EMPATHY",
+            "severity": "medium",
+            "explanation": "Менеджер сразу переходит к бонусу, не отреагировав на состояние игрока.",
+            "message_refs": [
+              "D003#2",
+              "D003#4"
+            ]
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "Исправить обещание: объяснить, что отыгрыш не гарантирован, и извиниться",
+            "kind": "service",
+            "message_refs": [
+              "D003#2"
+            ]
+          },
+          {
+            "text": "Разобрать формулировки бонусных предложений и работу с эмпатией",
+            "kind": "coaching",
+            "message_refs": []
+          }
+        ]
+      }
+    },
+    {
+      "dialog_id": "D004",
+      "player_id": "P1004",
+      "manager_id": "Emily",
+      "analysis": {
+        "profile": {
+          "summary": "Регулярный VIP-игрок, депозиты стабильны. Установлен депозитный лимит."
+        },
+        "quality": {
+          "tone": 92,
+          "empathy": 90,
+          "engagement": 90,
+          "personalization": 85,
+          "problem_understanding": 90,
+          "completeness": 90,
+          "follow_up": 88,
+          "next_steps_clarity": 92,
+          "overall": 93,
+          "summary": "Проактивная забота без предложений и уместные варианты ограничений. Просьба игрока выполнена сразу."
+        },
+        "player_points": [
+          {
+            "message_id": "D004#2",
+            "dissatisfaction": 40,
+            "state": "disappointment"
+          },
+          {
+            "message_id": "D004#4",
+            "dissatisfaction": 10,
+            "state": "neutral"
+          }
+        ],
+        "manager_points": [
+          {
+            "message_id": "D004#1",
+            "engagement": 88
+          },
+          {
+            "message_id": "D004#3",
+            "engagement": 92
+          },
+          {
+            "message_id": "D004#5",
+            "engagement": 88
+          }
+        ],
+        "rg": {
+          "signal": "none",
+          "handled": "not_applicable",
+          "message_refs": []
+        },
+        "risk_flags": [],
+        "violations": [],
+        "recommendations": []
+      }
+    },
+    {
+      "dialog_id": "D005",
+      "player_id": "P1005",
+      "manager_id": "Ольга",
+      "analysis": {
+        "profile": {
+          "summary": "Крупный выигрыш, ожидает вывод $12 000. Депозиты выросли на 19%."
+        },
+        "quality": {
+          "tone": 70,
+          "empathy": 50,
+          "engagement": 45,
+          "personalization": 60,
+          "problem_understanding": 40,
+          "completeness": 60,
+          "follow_up": 50,
+          "next_steps_clarity": 50,
+          "overall": 45,
+          "summary": "Поздравление уместно, но дальше менеджер дважды отговаривает от вывода ради турнира. Решение игрока не уважено."
+        },
+        "player_points": [
+          {
+            "message_id": "D005#2",
+            "dissatisfaction": 5,
+            "state": "positive"
+          },
+          {
+            "message_id": "D005#4",
+            "dissatisfaction": 25,
+            "state": "irritation"
+          },
+          {
+            "message_id": "D005#6",
+            "dissatisfaction": 35,
+            "state": "irritation"
+          }
+        ],
+        "manager_points": [
+          {
+            "message_id": "D005#1",
+            "engagement": 70
+          },
+          {
+            "message_id": "D005#3",
+            "engagement": 35
+          },
+          {
+            "message_id": "D005#5",
+            "engagement": 25
+          }
+        ],
+        "rg": {
+          "signal": "none",
+          "handled": "not_applicable",
+          "message_refs": []
+        },
+        "risk_flags": [],
+        "violations": [
+          {
+            "title": "Давление: оставить выигрыш на балансе",
+            "category": "operational",
+            "code": "COMPLIANCE_RISK",
+            "severity": "medium",
+            "explanation": "Менеджер дважды отговаривает от вывода и напоминает о сроках вывода ради турнира.",
+            "message_refs": [
+              "D005#3",
+              "D005#5"
+            ]
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "Проверить статус вывода $12 000 и сообщить игроку срок",
+            "kind": "service",
+            "message_refs": []
+          },
+          {
+            "text": "Не отговаривать игрока от вывода выигрыша",
+            "kind": "coaching",
+            "message_refs": [
+              "D005#3",
+              "D005#5"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "dialog_id": "D006",
+      "player_id": "P1006",
+      "manager_id": "Алина",
+      "analysis": {
+        "profile": {
+          "summary": "Депозиты упали на 60%, ожидает вывод $2 800. Риск оттока."
+        },
+        "quality": {
+          "tone": 30,
+          "empathy": 15,
+          "engagement": 25,
+          "personalization": 20,
+          "problem_understanding": 30,
+          "completeness": 20,
+          "follow_up": 10,
+          "next_steps_clarity": 10,
+          "overall": 15,
+          "summary": "Шаблонные ответы «ожидайте» без статуса и срока. Упоминание чарджбэка проигнорировано, игрок ушёл."
+        },
+        "player_points": [
+          {
+            "message_id": "D006#1",
+            "dissatisfaction": 60,
+            "state": "dissatisfaction"
+          },
+          {
+            "message_id": "D006#3",
+            "dissatisfaction": 85,
+            "state": "irritation"
+          },
+          {
+            "message_id": "D006#5",
+            "dissatisfaction": 80,
+            "state": "disappointment"
+          }
+        ],
+        "manager_points": [
+          {
+            "message_id": "D006#2",
+            "engagement": 30
+          },
+          {
+            "message_id": "D006#4",
+            "engagement": 20
+          }
+        ],
+        "rg": {
+          "signal": "none",
+          "handled": "not_applicable",
+          "message_refs": []
+        },
+        "risk_flags": [
+          "chargeback_threat",
+          "churn_threat"
+        ],
+        "violations": [
+          {
+            "title": "Упоминание чарджбэка проигнорировано",
+            "category": "operational",
+            "code": "NO_ESCALATION",
+            "severity": "high",
+            "explanation": "Менеджер не эскалировал задержку вывода после слов о чарджбэке.",
+            "message_refs": [
+              "D006#3",
+              "D006#4"
+            ]
+          },
+          {
+            "title": "Нет статуса и следующего шага по выводу",
+            "category": "communication",
+            "code": "NO_FOLLOW_UP",
+            "severity": "high",
+            "explanation": "Ответы «ожидайте» без срока и статуса, к игроку не вернулись.",
+            "message_refs": [
+              "D006#2",
+              "D006#4"
+            ]
+          },
+          {
+            "title": "Долгое ожидание ответа по выводу",
+            "category": "communication",
+            "code": "SLOW_RESPONSE",
+            "severity": "medium",
+            "explanation": "Игрок ждал ответа 2 часа и 4,5 часа.",
+            "message_refs": [
+              "D006#2",
+              "D006#4"
+            ]
+          },
+          {
+            "title": "Нет признания пятидневной задержки",
+            "category": "communication",
+            "code": "LOW_EMPATHY",
+            "severity": "medium",
+            "explanation": "Менеджер не извинился и не признал неудобство игрока.",
+            "message_refs": [
+              "D006#2",
+              "D006#4"
+            ]
+          },
+          {
+            "title": "Шаблонный сухой тон",
+            "category": "communication",
+            "code": "DRY_TONE",
+            "severity": "low",
+            "explanation": "Ответы похожи на шаблон без внимания к ситуации игрока.",
+            "message_refs": [
+              "D006#2",
+              "D006#4"
+            ]
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "Эскалировать вывод $2 800 в платежи и проверить причину задержки",
+            "kind": "service",
+            "message_refs": [
+              "D006#3"
+            ]
+          },
+          {
+            "text": "Написать игроку: статус, срок и извинение за ожидание",
+            "kind": "service",
+            "message_refs": [
+              "D006#5"
+            ]
+          },
+          {
+            "text": "Разобрать шаблонные ответы «ожидайте» без статуса",
+            "kind": "coaching",
+            "message_refs": [
+              "D006#2",
+              "D006#4"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "dialog_id": "D007",
+      "player_id": "P1007",
+      "manager_id": "Tom",
+      "analysis": {
+        "profile": {
+          "summary": "Регулярный VIP-игрок, депозиты стабильны."
+        },
+        "quality": {
+          "tone": 90,
+          "empathy": 80,
+          "engagement": 92,
+          "personalization": 75,
+          "problem_understanding": 95,
+          "completeness": 95,
+          "follow_up": 95,
+          "next_steps_clarity": 92,
+          "overall": 93,
+          "summary": "Быстро нашёл причину задержки, подсказал, где письмо, и сам сообщил о результате."
+        },
+        "player_points": [
+          {
+            "message_id": "D007#1",
+            "dissatisfaction": 40,
+            "state": "dissatisfaction"
+          },
+          {
+            "message_id": "D007#3",
+            "dissatisfaction": 10,
+            "state": "neutral"
+          },
+          {
+            "message_id": "D007#6",
+            "dissatisfaction": 5,
+            "state": "resolved"
+          }
+        ],
+        "manager_points": [
+          {
+            "message_id": "D007#2",
+            "engagement": 92
+          },
+          {
+            "message_id": "D007#4",
+            "engagement": 90
+          },
+          {
+            "message_id": "D007#5",
+            "engagement": 90
+          }
+        ],
+        "rg": {
+          "signal": "none",
+          "handled": "not_applicable",
+          "message_refs": []
+        },
+        "risk_flags": [],
+        "violations": [],
+        "recommendations": []
+      }
+    },
+    {
+      "dialog_id": "D008",
+      "player_id": "P1008",
+      "manager_id": "Максим",
+      "analysis": {
+        "profile": {
+          "summary": "Частота депозитов выросла с 12 до 46 при падении суммы на 20%, получено 18 бонусов за 30 дней."
+        },
+        "quality": {
+          "tone": 70,
+          "empathy": 30,
+          "engagement": 60,
+          "personalization": 70,
+          "problem_understanding": 55,
+          "completeness": 60,
+          "follow_up": 35,
+          "next_steps_clarity": 50,
+          "overall": 55,
+          "summary": "Бонусы выданы быстро и персонально, но проигрыш игрока остался без внимания. Последний вопрос без ответа."
+        },
+        "player_points": [
+          {
+            "message_id": "D008#1",
+            "dissatisfaction": 25,
+            "state": "neutral"
+          },
+          {
+            "message_id": "D008#3",
+            "dissatisfaction": 50,
+            "state": "dissatisfaction"
+          },
+          {
+            "message_id": "D008#5",
+            "dissatisfaction": 10,
+            "state": "positive"
+          },
+          {
+            "message_id": "D008#6",
+            "dissatisfaction": 15,
+            "state": "neutral"
+          }
+        ],
+        "manager_points": [
+          {
+            "message_id": "D008#2",
+            "engagement": 50
+          },
+          {
+            "message_id": "D008#4",
+            "engagement": 70
+          }
+        ],
+        "rg": {
+          "signal": "none",
+          "handled": "not_applicable",
+          "message_refs": []
+        },
+        "risk_flags": [],
+        "violations": [
+          {
+            "title": "Вопрос о завтрашних бонусах без ответа",
+            "category": "communication",
+            "code": "NO_FOLLOW_UP",
+            "severity": "medium",
+            "explanation": "Игрок спросил о бонусах на завтра, ответа нет.",
+            "message_refs": [
+              "D008#6"
+            ]
+          },
+          {
+            "title": "Нет реакции на проигрыш игрока",
+            "category": "communication",
+            "code": "LOW_EMPATHY",
+            "severity": "medium",
+            "explanation": "Менеджер выдаёт бонусы, не отреагировав на слова «всё слил».",
+            "message_refs": [
+              "D008#2",
+              "D008#4"
+            ]
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "Ответить игроку на вопрос о бонусах на завтра",
+            "kind": "service",
+            "message_refs": [
+              "D008#6"
+            ]
+          },
+          {
+            "text": "Реагировать на проигрыш игрока эмпатией до предложения бонуса",
+            "kind": "coaching",
+            "message_refs": [
+              "D008#2",
+              "D008#4"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "dialog_id": "D009",
+      "player_id": "P1009",
+      "manager_id": "Ольга",
+      "analysis": {
+        "profile": {
+          "summary": "Частота депозитов выросла с 13 до 41, получено 15 бонусов за 30 дней. Установлен лимит."
+        },
+        "quality": {
+          "tone": 92,
+          "empathy": 88,
+          "engagement": 92,
+          "personalization": 90,
+          "problem_understanding": 95,
+          "completeness": 90,
+          "follow_up": 90,
+          "next_steps_clarity": 92,
+          "overall": 92,
+          "summary": "Заметил паттерн по метрикам, отказал в бонусе, мягко предложил паузу и лимит и договорился о возврате к разговору."
+        },
+        "player_points": [
+          {
+            "message_id": "D009#1",
+            "dissatisfaction": 40,
+            "state": "dissatisfaction"
+          },
+          {
+            "message_id": "D009#3",
+            "dissatisfaction": 25,
+            "state": "neutral"
+          },
+          {
+            "message_id": "D009#5",
+            "dissatisfaction": 15,
+            "state": "neutral"
+          }
+        ],
+        "manager_points": [
+          {
+            "message_id": "D009#2",
+            "engagement": 90
+          },
+          {
+            "message_id": "D009#4",
+            "engagement": 90
+          },
+          {
+            "message_id": "D009#6",
+            "engagement": 90
+          }
+        ],
+        "rg": {
+          "signal": "none",
+          "handled": "not_applicable",
+          "message_refs": []
+        },
+        "risk_flags": [],
+        "violations": [],
+        "recommendations": []
+      }
+    },
+    {
+      "dialog_id": "D010",
+      "player_id": "P1010",
+      "manager_id": "Алина",
+      "analysis": {
+        "profile": {
+          "summary": "Депозиты выросли на 58%, частота с 9 до 22."
+        },
+        "quality": {
+          "tone": 40,
+          "empathy": 30,
+          "engagement": 20,
+          "personalization": 30,
+          "problem_understanding": 15,
+          "completeness": 25,
+          "follow_up": 20,
+          "next_steps_clarity": 30,
+          "overall": 8,
+          "summary": "Просьба о блокировке аккаунта встречена кешбэком, затем кешбэк предложен снова. Самоисключение не инициировано."
+        },
+        "player_points": [
+          {
+            "message_id": "D010#1",
+            "dissatisfaction": 55,
+            "state": "disappointment"
+          },
+          {
+            "message_id": "D010#3",
+            "dissatisfaction": 60,
+            "state": "dissatisfaction"
+          }
+        ],
+        "manager_points": [
+          {
+            "message_id": "D010#2",
+            "engagement": 15
+          },
+          {
+            "message_id": "D010#4",
+            "engagement": 25
+          }
+        ],
+        "rg": {
+          "signal": "self_exclusion_request",
+          "handled": "no",
+          "message_refs": [
+            "D010#1"
+          ]
+        },
+        "risk_flags": [],
+        "violations": [
+          {
+            "title": "Кешбэк в ответ на просьбу заблокировать аккаунт",
+            "category": "rg_safety",
+            "code": "INCENTIVE_AFTER_STOP_REQUEST",
+            "severity": "critical",
+            "explanation": "Менеджер предложил кешбэк и оставил его на балансе вместо самоисключения.",
+            "message_refs": [
+              "D010#2",
+              "D010#4"
+            ]
+          },
+          {
+            "title": "Самоисключение не инициировано",
+            "category": "rg_safety",
+            "code": "IGNORED_SELF_EXCLUSION",
+            "severity": "high",
+            "explanation": "Менеджер лишь указал на саппорт и не запустил процедуру.",
+            "message_refs": [
+              "D010#4"
+            ]
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "Немедленно инициировать самоисключение и убрать кешбэк с баланса игрока",
+            "kind": "protective",
+            "message_refs": [
+              "D010#1"
+            ]
+          },
+          {
+            "text": "Связаться с игроком и подтвердить оформление самоисключения",
+            "kind": "service",
+            "message_refs": [
+              "D010#3"
+            ]
+          },
+          {
+            "text": "Разобрать: просьбу о блокировке нельзя удерживать бонусами",
+            "kind": "coaching",
+            "message_refs": [
+              "D010#2",
+              "D010#4"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "dialog_id": "D011",
+      "player_id": "P1011",
+      "manager_id": "Emily",
+      "analysis": {
+        "profile": {
+          "summary": "Аккаунт самоисключён на 1 год."
+        },
+        "quality": {
+          "tone": 98,
+          "empathy": 95,
+          "engagement": 97,
+          "personalization": 85,
+          "problem_understanding": 98,
+          "completeness": 98,
+          "follow_up": 95,
+          "next_steps_clarity": 98,
+          "overall": 97,
+          "summary": "Сразу запустил самоисключение, дал варианты срока и ресурсы помощи, подтвердил отсутствие офферов."
+        },
+        "player_points": [
+          {
+            "message_id": "D011#1",
+            "dissatisfaction": 35,
+            "state": "disappointment"
+          },
+          {
+            "message_id": "D011#3",
+            "dissatisfaction": 15,
+            "state": "neutral"
+          },
+          {
+            "message_id": "D011#5",
+            "dissatisfaction": 10,
+            "state": "positive"
+          }
+        ],
+        "manager_points": [
+          {
+            "message_id": "D011#2",
+            "engagement": 97
+          },
+          {
+            "message_id": "D011#4",
+            "engagement": 98
+          }
+        ],
+        "rg": {
+          "signal": "self_exclusion_request",
+          "handled": "yes",
+          "message_refs": [
+            "D011#1"
+          ]
+        },
+        "risk_flags": [],
+        "violations": [],
+        "recommendations": [
+          {
+            "text": "Убедиться, что игрок исключён из всех рассылок и офферов",
+            "kind": "protective",
+            "message_refs": [
+              "D011#4"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "dialog_id": "D012",
+      "player_id": "P1012",
+      "manager_id": "Максим",
+      "analysis": {
+        "profile": {
+          "summary": "Регулярный VIP-игрок, депозиты стабильны."
+        },
+        "quality": {
+          "tone": 60,
+          "empathy": 40,
+          "engagement": 50,
+          "personalization": 40,
+          "problem_understanding": 85,
+          "completeness": 85,
+          "follow_up": 40,
+          "next_steps_clarity": 85,
+          "overall": 58,
+          "summary": "Ответ верный и конкретный, но пришёл через 9 часов после вопроса."
+        },
+        "player_points": [
+          {
+            "message_id": "D012#1",
+            "dissatisfaction": 20,
+            "state": "neutral"
+          },
+          {
+            "message_id": "D012#2",
+            "dissatisfaction": 45,
+            "state": "irritation"
+          },
+          {
+            "message_id": "D012#4",
+            "dissatisfaction": 30,
+            "state": "detachment"
+          }
+        ],
+        "manager_points": [
+          {
+            "message_id": "D012#3",
+            "engagement": 50
+          }
+        ],
+        "rg": {
+          "signal": "none",
+          "handled": "not_applicable",
+          "message_refs": []
+        },
+        "risk_flags": [],
+        "violations": [
+          {
+            "title": "Ответ о выводе через 9 часов",
+            "category": "communication",
+            "code": "SLOW_RESPONSE",
+            "severity": "medium",
+            "explanation": "Игрок спросил о выводе в 10:12 и получил ответ в 19:32 после напоминания.",
+            "message_refs": [
+              "D012#3"
+            ]
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "Передавать диалоги коллеге при смене, не оставлять вопросы о выводе без ответа",
+            "kind": "coaching",
+            "message_refs": [
+              "D012#3"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "dialog_id": "D013",
+      "player_id": "P1013",
+      "manager_id": "Ольга",
+      "analysis": {
+        "profile": {
+          "summary": "Депозиты упали на 93%, 16 дней без входа. Высокий риск оттока."
+        },
+        "quality": {
+          "tone": 60,
+          "empathy": null,
+          "engagement": 25,
+          "personalization": 20,
+          "problem_understanding": 20,
+          "completeness": null,
+          "follow_up": 30,
+          "next_steps_clarity": null,
+          "overall": 28,
+          "summary": "Три акционных сообщения подряд без персонализации и без попытки выяснить причину молчания."
+        },
+        "player_points": [],
+        "manager_points": [
+          {
+            "message_id": "D013#1",
+            "engagement": 25
+          },
+          {
+            "message_id": "D013#2",
+            "engagement": 20
+          },
+          {
+            "message_id": "D013#3",
+            "engagement": 30
+          }
+        ],
+        "rg": {
+          "signal": "none",
+          "handled": "not_applicable",
+          "message_refs": []
+        },
+        "risk_flags": [],
+        "violations": [
+          {
+            "title": "Шаблонные рассылки без персонализации",
+            "category": "communication",
+            "code": "PERSONALIZATION_ERROR",
+            "severity": "medium",
+            "explanation": "Три акционных сообщения подряд без учёта игры игрока и без попытки узнать причину молчания.",
+            "message_refs": [
+              "D013#1",
+              "D013#2",
+              "D013#3"
+            ]
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "Написать игроку лично, учесть любимую игру Live Roulette, без акции",
+            "kind": "service",
+            "message_refs": []
+          },
+          {
+            "text": "Прекратить серию акционных сообщений молчащему игроку",
+            "kind": "coaching",
+            "message_refs": [
+              "D013#1",
+              "D013#2",
+              "D013#3"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "dialog_id": "D014",
+      "player_id": "P1014",
+      "manager_id": "Tom",
+      "analysis": {
+        "profile": {
+          "summary": "Депозитов за 30 дней нет (было $6 400), 14 дней без входа. Риск оттока."
+        },
+        "quality": {
+          "tone": 90,
+          "empathy": 80,
+          "engagement": 88,
+          "personalization": 92,
+          "problem_understanding": 85,
+          "completeness": 85,
+          "follow_up": 85,
+          "next_steps_clarity": 80,
+          "overall": 88,
+          "summary": "Персональное касание без давления с учётом любимой игры. Предложена помощь с бронированием места."
+        },
+        "player_points": [
+          {
+            "message_id": "D014#2",
+            "dissatisfaction": 10,
+            "state": "positive"
+          }
+        ],
+        "manager_points": [
+          {
+            "message_id": "D014#1",
+            "engagement": 88
+          },
+          {
+            "message_id": "D014#3",
+            "engagement": 85
+          }
+        ],
+        "rg": {
+          "signal": "none",
+          "handled": "not_applicable",
+          "message_refs": []
+        },
+        "risk_flags": [],
+        "violations": [],
+        "recommendations": [
+          {
+            "text": "Через несколько дней уточнить, заходил ли игрок за новый стол",
+            "kind": "service",
+            "message_refs": [
+              "D014#3"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "dialog_id": "D015",
+      "player_id": "P1015",
+      "manager_id": "Алина",
+      "analysis": {
+        "profile": {
+          "summary": "Регулярный VIP-игрок, активность стабильна."
+        },
+        "quality": {
+          "tone": 65,
+          "empathy": 50,
+          "engagement": 55,
+          "personalization": 45,
+          "problem_understanding": 70,
+          "completeness": 70,
+          "follow_up": 50,
+          "next_steps_clarity": null,
+          "overall": 58,
+          "summary": "Поздравление пришло с задержкой в два дня, фриспины уместны. Извинение формальное."
+        },
+        "player_points": [
+          {
+            "message_id": "D015#2",
+            "dissatisfaction": 35,
+            "state": "dissatisfaction"
+          }
+        ],
+        "manager_points": [
+          {
+            "message_id": "D015#1",
+            "engagement": 55
+          },
+          {
+            "message_id": "D015#3",
+            "engagement": 45
+          }
+        ],
+        "rg": {
+          "signal": "none",
+          "handled": "not_applicable",
+          "message_refs": []
+        },
+        "risk_flags": [],
+        "violations": [
+          {
+            "title": "Поздравление с задержкой на два дня",
+            "category": "communication",
+            "code": "PERSONALIZATION_ERROR",
+            "severity": "low",
+            "explanation": "С днём рождения поздравили через два дня.",
+            "message_refs": [
+              "D015#1"
+            ]
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "Настроить напоминание о днях рождения игроков",
+            "kind": "coaching",
+            "message_refs": [
+              "D015#1"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "dialog_id": "D016",
+      "player_id": "P1016",
+      "manager_id": "Максим",
+      "analysis": {
+        "profile": {
+          "summary": "Депозиты упали на 68%. Риск оттока."
+        },
+        "quality": {
+          "tone": 55,
+          "empathy": 25,
+          "engagement": 25,
+          "personalization": 40,
+          "problem_understanding": 40,
+          "completeness": 20,
+          "follow_up": 5,
+          "next_steps_clarity": 20,
+          "overall": 15,
+          "summary": "Обещание начислить кешбэк не выполнено, два сообщения игрока остались без ответа."
+        },
+        "player_points": [
+          {
+            "message_id": "D016#1",
+            "dissatisfaction": 30,
+            "state": "dissatisfaction"
+          },
+          {
+            "message_id": "D016#3",
+            "dissatisfaction": 60,
+            "state": "irritation"
+          },
+          {
+            "message_id": "D016#4",
+            "dissatisfaction": 75,
+            "state": "irritation"
+          }
+        ],
+        "manager_points": [
+          {
+            "message_id": "D016#2",
+            "engagement": 35
+          }
+        ],
+        "rg": {
+          "signal": "none",
+          "handled": "not_applicable",
+          "message_refs": []
+        },
+        "risk_flags": [],
+        "violations": [
+          {
+            "title": "Обещанный кешбэк не начислен, игрок без ответа",
+            "category": "operational",
+            "code": "UNRESOLVED_REQUEST",
+            "severity": "high",
+            "explanation": "Менеджер обещал начислить «завтра» и не ответил на два сообщения игрока за четыре дня.",
+            "message_refs": [
+              "D016#2",
+              "D016#3",
+              "D016#4"
+            ]
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "Проверить и начислить обещанный кешбэк, извиниться перед игроком",
+            "kind": "service",
+            "message_refs": [
+              "D016#2"
+            ]
+          },
+          {
+            "text": "Фиксировать обещания игрокам с датой и напоминанием",
+            "kind": "coaching",
+            "message_refs": [
+              "D016#2"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "dialog_id": "D017",
+      "player_id": "P1017",
+      "manager_id": "Emily",
+      "analysis": {
+        "profile": {
+          "summary": "Регулярный VIP-игрок, депозиты стабильны."
+        },
+        "quality": {
+          "tone": 50,
+          "empathy": 35,
+          "engagement": 25,
+          "personalization": 30,
+          "problem_understanding": 25,
+          "completeness": 20,
+          "follow_up": 20,
+          "next_steps_clarity": 15,
+          "overall": 25,
+          "summary": "Игрока дважды отправили в техподдержку, его проблему менеджер не принял в работу. Компенсация потерянных фриспинов не обсуждалась."
+        },
+        "player_points": [
+          {
+            "message_id": "D017#1",
+            "dissatisfaction": 45,
+            "state": "dissatisfaction"
+          },
+          {
+            "message_id": "D017#3",
+            "dissatisfaction": 70,
+            "state": "irritation"
+          }
+        ],
+        "manager_points": [
+          {
+            "message_id": "D017#2",
+            "engagement": 30
+          },
+          {
+            "message_id": "D017#4",
+            "engagement": 25
+          }
+        ],
+        "rg": {
+          "signal": "none",
+          "handled": "not_applicable",
+          "message_refs": []
+        },
+        "risk_flags": [],
+        "violations": [
+          {
+            "title": "Игрока переадресуют между чатом и менеджером",
+            "category": "operational",
+            "code": "NO_ESCALATION",
+            "severity": "medium",
+            "explanation": "Менеджер дважды отправил игрока в техподдержку и не взял обращение на себя.",
+            "message_refs": [
+              "D017#2",
+              "D017#4"
+            ]
+          },
+          {
+            "title": "Нет ответа по потерянным фриспинам",
+            "category": "communication",
+            "code": "INCOMPLETE_ANSWER",
+            "severity": "medium",
+            "explanation": "Дважды потерянные фриспины не признаны, компенсация не обсуждалась.",
+            "message_refs": [
+              "D017#2",
+              "D017#4"
+            ]
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "Взять обращение на себя, передать в техподдержку с данными игрока и сообщить ход решения",
+            "kind": "service",
+            "message_refs": [
+              "D017#2",
+              "D017#4"
+            ]
+          },
+          {
+            "text": "Рассмотреть компенсацию за потерянные фриспины по регламенту",
+            "kind": "service",
+            "message_refs": [
+              "D017#1"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "dialog_id": "D018",
+      "player_id": "P1018",
+      "manager_id": "Ольга",
+      "analysis": {
+        "profile": {
+          "summary": "Недавно в VIP, депозиты выросли с $900 до $3 100."
+        },
+        "quality": {
+          "tone": 90,
+          "empathy": 80,
+          "engagement": 85,
+          "personalization": 82,
+          "problem_understanding": 88,
+          "completeness": 85,
+          "follow_up": null,
+          "next_steps_clarity": 85,
+          "overall": 86,
+          "summary": "Тёплое знакомство, уточнены игры и канал связи, понятно описаны возможности VIP."
+        },
+        "player_points": [
+          {
+            "message_id": "D018#2",
+            "dissatisfaction": 10,
+            "state": "neutral"
+          },
+          {
+            "message_id": "D018#4",
+            "dissatisfaction": 10,
+            "state": "formal_agreement"
+          }
+        ],
+        "manager_points": [
+          {
+            "message_id": "D018#1",
+            "engagement": 85
+          },
+          {
+            "message_id": "D018#3",
+            "engagement": 82
+          }
+        ],
+        "rg": {
+          "signal": "none",
+          "handled": "not_applicable",
+          "message_refs": []
+        },
+        "risk_flags": [],
+        "violations": [],
+        "recommendations": [
+          {
+            "text": "Учитывать предпочтения игрока (live-рулетка вечером, Telegram) в следующих касаниях",
+            "kind": "service",
+            "message_refs": [
+              "D018#2"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "dialog_id": "D019",
+      "player_id": "P1019",
+      "manager_id": "Tom",
+      "analysis": {
+        "profile": {
+          "summary": "Регулярный VIP-игрок, депозиты стабильны. Сравнивает с конкурентом."
+        },
+        "quality": {
+          "tone": 55,
+          "empathy": 35,
+          "engagement": 20,
+          "personalization": 25,
+          "problem_understanding": 40,
+          "completeness": 15,
+          "follow_up": 20,
+          "next_steps_clarity": 20,
+          "overall": 22,
+          "summary": "Вопрос о преимуществах VIP получил общие слова вместо конкретики. Вопрос о кешбэке остался без ответа."
+        },
+        "player_points": [
+          {
+            "message_id": "D019#1",
+            "dissatisfaction": 40,
+            "state": "dissatisfaction"
+          },
+          {
+            "message_id": "D019#3",
+            "dissatisfaction": 55,
+            "state": "irritation"
+          },
+          {
+            "message_id": "D019#5",
+            "dissatisfaction": 60,
+            "state": "dissatisfaction"
+          }
+        ],
+        "manager_points": [
+          {
+            "message_id": "D019#2",
+            "engagement": 20
+          },
+          {
+            "message_id": "D019#4",
+            "engagement": 25
+          }
+        ],
+        "rg": {
+          "signal": "none",
+          "handled": "not_applicable",
+          "message_refs": []
+        },
+        "risk_flags": [
+          "churn_threat"
+        ],
+        "violations": [
+          {
+            "title": "Общие слова вместо преимуществ VIP",
+            "category": "communication",
+            "code": "INCOMPLETE_ANSWER",
+            "severity": "medium",
+            "explanation": "Менеджер не назвал конкретных условий VIP-программы.",
+            "message_refs": [
+              "D019#2",
+              "D019#4"
+            ]
+          },
+          {
+            "title": "Вопрос о кешбэке без ответа",
+            "category": "operational",
+            "code": "UNRESOLVED_REQUEST",
+            "severity": "medium",
+            "explanation": "Прямой вопрос игрока о кешбэке остался без ответа.",
+            "message_refs": [
+              "D019#5"
+            ]
+          },
+          {
+            "title": "Долгое ожидание ответа",
+            "category": "communication",
+            "code": "SLOW_RESPONSE",
+            "severity": "low",
+            "explanation": "Игрок ждал ответа 2 часа 15 минут.",
+            "message_refs": [
+              "D019#4"
+            ]
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "Ответить на вопрос о кешбэке и назвать конкретные условия VIP",
+            "kind": "service",
+            "message_refs": [
+              "D019#5"
+            ]
+          },
+          {
+            "text": "Подготовить краткое описание преимуществ VIP с цифрами",
+            "kind": "coaching",
+            "message_refs": []
+          }
+        ]
+      }
+    },
+    {
+      "dialog_id": "D020",
+      "player_id": "P1020",
+      "manager_id": "Алина",
+      "analysis": {
+        "profile": {
+          "summary": "Депозиты упали на 57%, 6 дней без входа."
+        },
+        "quality": {
+          "tone": 50,
+          "empathy": null,
+          "engagement": 12,
+          "personalization": 15,
+          "problem_understanding": 10,
+          "completeness": null,
+          "follow_up": 15,
+          "next_steps_clarity": null,
+          "overall": 15,
+          "summary": "Пять акционных сообщений за три дня без ответа игрока. Просьба об отписке не обработана."
+        },
+        "player_points": [
+          {
+            "message_id": "D020#6",
+            "dissatisfaction": 55,
+            "state": "irritation"
+          }
+        ],
+        "manager_points": [
+          {
+            "message_id": "D020#1",
+            "engagement": 15
+          },
+          {
+            "message_id": "D020#2",
+            "engagement": 15
+          },
+          {
+            "message_id": "D020#3",
+            "engagement": 15
+          },
+          {
+            "message_id": "D020#4",
+            "engagement": 12
+          },
+          {
+            "message_id": "D020#5",
+            "engagement": 10
+          }
+        ],
+        "rg": {
+          "signal": "none",
+          "handled": "not_applicable",
+          "message_refs": []
+        },
+        "risk_flags": [
+          "churn_threat"
+        ],
+        "violations": [
+          {
+            "title": "Просьба об отписке без реакции",
+            "category": "operational",
+            "code": "UNRESOLVED_REQUEST",
+            "severity": "high",
+            "explanation": "Игрок просит прекратить рассылки, ответа нет.",
+            "message_refs": [
+              "D020#6"
+            ]
+          },
+          {
+            "title": "Пять акционных сообщений без ответа игрока",
+            "category": "communication",
+            "code": "PERSONALIZATION_ERROR",
+            "severity": "medium",
+            "explanation": "Серия одинаковых акций с давлением («последний шанс») при молчании игрока.",
+            "message_refs": [
+              "D020#1",
+              "D020#2",
+              "D020#3",
+              "D020#4",
+              "D020#5"
+            ]
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "Немедленно отключить игрока от маркетинговых рассылок и подтвердить это",
+            "kind": "service",
+            "message_refs": [
+              "D020#6"
+            ]
+          },
+          {
+            "text": "Сократить акционные касания к молчащим игрокам",
+            "kind": "coaching",
+            "message_refs": [
+              "D020#1",
+              "D020#2",
+              "D020#3",
+              "D020#4",
+              "D020#5"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "dialog_id": "D021",
+      "player_id": "P1021",
+      "manager_id": "Максим",
+      "analysis": {
+        "profile": {
+          "summary": "Регулярный VIP-игрок, депозиты стабильны."
+        },
+        "quality": {
+          "tone": 65,
+          "empathy": null,
+          "engagement": 30,
+          "personalization": 40,
+          "problem_understanding": 50,
+          "completeness": 20,
+          "follow_up": 40,
+          "next_steps_clarity": 25,
+          "overall": 30,
+          "summary": "Условия бонуса названы приблизительно, без точных цифр. Вопрос о сумме вывода без ответа."
+        },
+        "player_points": [
+          {
+            "message_id": "D021#1",
+            "dissatisfaction": 25,
+            "state": "neutral"
+          },
+          {
+            "message_id": "D021#3",
+            "dissatisfaction": 50,
+            "state": "irritation"
+          }
+        ],
+        "manager_points": [
+          {
+            "message_id": "D021#2",
+            "engagement": 30
+          },
+          {
+            "message_id": "D021#4",
+            "engagement": 35
+          }
+        ],
+        "rg": {
+          "signal": "none",
+          "handled": "not_applicable",
+          "message_refs": []
+        },
+        "risk_flags": [],
+        "violations": [
+          {
+            "title": "Непроверенные условия вейджера",
+            "category": "operational",
+            "code": "MISINFORMATION",
+            "severity": "high",
+            "explanation": "«Вроде х35, точно не помню» вместо точных условий бонуса.",
+            "message_refs": [
+              "D021#2",
+              "D021#4"
+            ]
+          },
+          {
+            "title": "Не отвечено, сколько можно вывести",
+            "category": "communication",
+            "code": "INCOMPLETE_ANSWER",
+            "severity": "medium",
+            "explanation": "Вопрос о сумме вывода с бонуса остался без ответа.",
+            "message_refs": [
+              "D021#2",
+              "D021#4"
+            ]
+          },
+          {
+            "title": "Долгий ответ на уточнение",
+            "category": "communication",
+            "code": "SLOW_RESPONSE",
+            "severity": "low",
+            "explanation": "Игрок ждал ответа на уточнение 2 часа.",
+            "message_refs": [
+              "D021#4"
+            ]
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "Уточнить точный вейджер и лимит вывода по бонусу и сообщить игроку",
+            "kind": "service",
+            "message_refs": [
+              "D021#4"
+            ]
+          },
+          {
+            "text": "Сверять условия бонусов перед ответом, не отвечать по памяти",
+            "kind": "coaching",
+            "message_refs": [
+              "D021#2",
+              "D021#4"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "dialog_id": "D022",
+      "player_id": "P1022",
+      "manager_id": "Emily",
+      "analysis": {
+        "profile": {
+          "summary": "Регулярный VIP-игрок, депозиты стабильны."
+        },
+        "quality": {
+          "tone": 92,
+          "empathy": 80,
+          "engagement": 92,
+          "personalization": 95,
+          "problem_understanding": 92,
+          "completeness": 90,
+          "follow_up": 90,
+          "next_steps_clarity": 92,
+          "overall": 92,
+          "summary": "Честно признал конкурентное предложение, подобрал персональное по привычкам игрока и сразу оформил."
+        },
+        "player_points": [
+          {
+            "message_id": "D022#1",
+            "dissatisfaction": 40,
+            "state": "dissatisfaction"
+          },
+          {
+            "message_id": "D022#3",
+            "dissatisfaction": 20,
+            "state": "neutral"
+          },
+          {
+            "message_id": "D022#5",
+            "dissatisfaction": 10,
+            "state": "positive"
+          }
+        ],
+        "manager_points": [
+          {
+            "message_id": "D022#2",
+            "engagement": 88
+          },
+          {
+            "message_id": "D022#4",
+            "engagement": 92
+          },
+          {
+            "message_id": "D022#6",
+            "engagement": 85
+          }
+        ],
+        "rg": {
+          "signal": "none",
+          "handled": "not_applicable",
+          "message_refs": []
+        },
+        "risk_flags": [],
+        "violations": [],
+        "recommendations": []
+      }
+    },
+    {
+      "dialog_id": "D023",
+      "player_id": "P1023",
+      "manager_id": "Ольга",
+      "analysis": {
+        "profile": {
+          "summary": "Регулярный VIP-игрок, депозиты стабильны. По словам игрока, играет с общей карты с другим аккаунтом."
+        },
+        "quality": {
+          "tone": 70,
+          "empathy": null,
+          "engagement": 30,
+          "personalization": 30,
+          "problem_understanding": 15,
+          "completeness": 40,
+          "follow_up": 40,
+          "next_steps_clarity": 50,
+          "overall": 20,
+          "summary": "Бонус начислен на связанный аккаунт без проверки. Риск мультиаккаунтинга не распознан."
+        },
+        "player_points": [
+          {
+            "message_id": "D023#1",
+            "dissatisfaction": 15,
+            "state": "neutral"
+          },
+          {
+            "message_id": "D023#3",
+            "dissatisfaction": 10,
+            "state": "neutral"
+          }
+        ],
+        "manager_points": [
+          {
+            "message_id": "D023#2",
+            "engagement": 35
+          },
+          {
+            "message_id": "D023#4",
+            "engagement": 40
+          }
+        ],
+        "rg": {
+          "signal": "none",
+          "handled": "not_applicable",
+          "message_refs": []
+        },
+        "risk_flags": [],
+        "violations": [
+          {
+            "title": "Бонус на связанный аккаунт с общей карты",
+            "category": "operational",
+            "code": "COMPLIANCE_RISK",
+            "severity": "high",
+            "explanation": "Менеджер начислил бонус второму аккаунту, зная об общей карте.",
+            "message_refs": [
+              "D023#2",
+              "D023#4"
+            ]
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "Проверить связь аккаунтов и отменить бонус на аккаунт 78234 по регламенту",
+            "kind": "service",
+            "message_refs": [
+              "D023#4"
+            ]
+          },
+          {
+            "text": "Передать случай в compliance или антифрод",
+            "kind": "service",
+            "message_refs": [
+              "D023#1"
+            ]
+          },
+          {
+            "text": "Разобрать: бонусы на связанные аккаунты недопустимы",
+            "kind": "coaching",
+            "message_refs": [
+              "D023#2"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "dialog_id": "D024",
+      "player_id": "P1024",
+      "manager_id": "Максим",
+      "analysis": {
+        "profile": {
+          "summary": "Депозиты упали на 54%, ожидает вывод $1 700."
+        },
+        "quality": {
+          "tone": 10,
+          "empathy": 5,
+          "engagement": 8,
+          "personalization": 20,
+          "problem_understanding": 25,
+          "completeness": 15,
+          "follow_up": 10,
+          "next_steps_clarity": 10,
+          "overall": 8,
+          "summary": "Грубый тон и перекладывание вины на игрока. Не названо, каких документов не хватает."
+        },
+        "player_points": [
+          {
+            "message_id": "D024#1",
+            "dissatisfaction": 70,
+            "state": "irritation"
+          },
+          {
+            "message_id": "D024#3",
+            "dissatisfaction": 80,
+            "state": "irritation"
+          },
+          {
+            "message_id": "D024#5",
+            "dissatisfaction": 85,
+            "state": "disappointment"
+          }
+        ],
+        "manager_points": [
+          {
+            "message_id": "D024#2",
+            "engagement": 10
+          },
+          {
+            "message_id": "D024#4",
+            "engagement": 5
+          }
+        ],
+        "rg": {
+          "signal": "none",
+          "handled": "not_applicable",
+          "message_refs": []
+        },
+        "risk_flags": [],
+        "violations": [
+          {
+            "title": "Грубый тон и перекладывание вины",
+            "category": "communication",
+            "code": "RUDE_TONE",
+            "severity": "high",
+            "explanation": "«Читайте правила внимательнее» и «Значит, не все» вместо помощи игроку.",
+            "message_refs": [
+              "D024#2",
+              "D024#4"
+            ]
+          },
+          {
+            "title": "Не названо, каких документов не хватает",
+            "category": "operational",
+            "code": "UNRESOLVED_REQUEST",
+            "severity": "high",
+            "explanation": "Вывод отклонён три раза, менеджер не объяснил, что именно исправить.",
+            "message_refs": [
+              "D024#2",
+              "D024#4"
+            ]
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "Проверить документы игрока и назвать, чего не хватает для вывода $1 700",
+            "kind": "service",
+            "message_refs": [
+              "D024#2",
+              "D024#4"
+            ]
+          },
+          {
+            "text": "Извиниться перед игроком за тон",
+            "kind": "service",
+            "message_refs": [
+              "D024#4"
+            ]
+          },
+          {
+            "text": "Разобрать тон общения при отказах игрокам",
+            "kind": "coaching",
+            "message_refs": [
+              "D024#2",
+              "D024#4"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "dialog_id": "D025",
+      "player_id": "P1025",
+      "manager_id": "Tom",
+      "analysis": {
+        "profile": {
+          "summary": "Регулярный VIP-игрок, депозиты стабильны."
+        },
+        "quality": {
+          "tone": 90,
+          "empathy": 80,
+          "engagement": 88,
+          "personalization": 80,
+          "problem_understanding": 90,
+          "completeness": 85,
+          "follow_up": 90,
+          "next_steps_clarity": 85,
+          "overall": 88,
+          "summary": "Проактивно уточнил исход неудачного депозита, коротко и вовремя."
+        },
+        "player_points": [
+          {
+            "message_id": "D025#2",
+            "dissatisfaction": 10,
+            "state": "neutral"
+          }
+        ],
+        "manager_points": [
+          {
+            "message_id": "D025#1",
+            "engagement": 85
+          },
+          {
+            "message_id": "D025#3",
+            "engagement": 70
+          }
+        ],
+        "rg": {
+          "signal": "none",
+          "handled": "not_applicable",
+          "message_refs": []
+        },
+        "risk_flags": [],
+        "violations": [],
+        "recommendations": []
+      }
+    },
+    {
+      "dialog_id": "D026",
+      "player_id": "P1026",
+      "manager_id": "Алина",
+      "analysis": {
+        "profile": {
+          "summary": "Регулярный VIP-игрок, депозиты стабильны."
+        },
+        "quality": {
+          "tone": 92,
+          "empathy": 85,
+          "engagement": 92,
+          "personalization": 85,
+          "problem_understanding": 95,
+          "completeness": 95,
+          "follow_up": 95,
+          "next_steps_clarity": 92,
+          "overall": 93,
+          "summary": "Быстро взял вывод в приоритет, назвал срок и сам сообщил об отправке."
+        },
+        "player_points": [
+          {
+            "message_id": "D026#1",
+            "dissatisfaction": 35,
+            "state": "dissatisfaction"
+          },
+          {
+            "message_id": "D026#4",
+            "dissatisfaction": 5,
+            "state": "resolved"
+          }
+        ],
+        "manager_points": [
+          {
+            "message_id": "D026#2",
+            "engagement": 92
+          },
+          {
+            "message_id": "D026#3",
+            "engagement": 90
+          }
+        ],
+        "rg": {
+          "signal": "none",
+          "handled": "not_applicable",
+          "message_refs": []
+        },
+        "risk_flags": [],
+        "violations": [],
+        "recommendations": []
+      }
+    },
+    {
+      "dialog_id": "D027",
+      "player_id": "P1027",
+      "manager_id": "Emily",
+      "analysis": {
+        "profile": {
+          "summary": "Регулярный VIP-игрок, депозиты стабильны."
+        },
+        "quality": {
+          "tone": 85,
+          "empathy": null,
+          "engagement": 85,
+          "personalization": 75,
+          "problem_understanding": 92,
+          "completeness": 95,
+          "follow_up": null,
+          "next_steps_clarity": 90,
+          "overall": 88,
+          "summary": "Точный ответ с суммой и временем начисления кешбэка."
+        },
+        "player_points": [
+          {
+            "message_id": "D027#1",
+            "dissatisfaction": 10,
+            "state": "neutral"
+          },
+          {
+            "message_id": "D027#3",
+            "dissatisfaction": 5,
+            "state": "positive"
+          }
+        ],
+        "manager_points": [
+          {
+            "message_id": "D027#2",
+            "engagement": 88
+          }
+        ],
+        "rg": {
+          "signal": "none",
+          "handled": "not_applicable",
+          "message_refs": []
+        },
+        "risk_flags": [],
+        "violations": [],
+        "recommendations": []
+      }
+    },
+    {
+      "dialog_id": "D028",
+      "player_id": "P1028",
+      "manager_id": "Ольга",
+      "analysis": {
+        "profile": {
+          "summary": "Депозиты выросли на 45%."
+        },
+        "quality": {
+          "tone": 90,
+          "empathy": null,
+          "engagement": 88,
+          "personalization": 80,
+          "problem_understanding": 92,
+          "completeness": 92,
+          "follow_up": 85,
+          "next_steps_clarity": 90,
+          "overall": 90,
+          "summary": "Объяснил причину лимита, предложил конкретный способ и отправил инструкцию."
+        },
+        "player_points": [
+          {
+            "message_id": "D028#1",
+            "dissatisfaction": 25,
+            "state": "neutral"
+          },
+          {
+            "message_id": "D028#3",
+            "dissatisfaction": 10,
+            "state": "neutral"
+          }
+        ],
+        "manager_points": [
+          {
+            "message_id": "D028#2",
+            "engagement": 90
+          },
+          {
+            "message_id": "D028#4",
+            "engagement": 85
+          }
+        ],
+        "rg": {
+          "signal": "none",
+          "handled": "not_applicable",
+          "message_refs": []
+        },
+        "risk_flags": [],
+        "violations": [],
+        "recommendations": []
+      }
+    },
+    {
+      "dialog_id": "D029",
+      "player_id": "P1029",
+      "manager_id": "Максим",
+      "analysis": {
+        "profile": {
+          "summary": "Крупный VIP-игрок: $18 500 депозитов за 30 дней, активность стабильна."
+        },
+        "quality": {
+          "tone": 70,
+          "empathy": 55,
+          "engagement": 40,
+          "personalization": 20,
+          "problem_understanding": 70,
+          "completeness": 60,
+          "follow_up": 50,
+          "next_steps_clarity": null,
+          "overall": 42,
+          "summary": "Игрока дважды назвали чужим именем. Извинение дано, но осадок остался."
+        },
+        "player_points": [
+          {
+            "message_id": "D029#2",
+            "dissatisfaction": 55,
+            "state": "irritation"
+          },
+          {
+            "message_id": "D029#4",
+            "dissatisfaction": 50,
+            "state": "disappointment"
+          }
+        ],
+        "manager_points": [
+          {
+            "message_id": "D029#1",
+            "engagement": 40
+          },
+          {
+            "message_id": "D029#3",
+            "engagement": 55
+          }
+        ],
+        "rg": {
+          "signal": "none",
+          "handled": "not_applicable",
+          "message_refs": []
+        },
+        "risk_flags": [],
+        "violations": [
+          {
+            "title": "Повторно неверное имя игрока",
+            "category": "communication",
+            "code": "PERSONALIZATION_ERROR",
+            "severity": "medium",
+            "explanation": "Игрока назвали Андреем вместо Сергея, и это уже второй раз.",
+            "message_refs": [
+              "D029#1",
+              "D029#4"
+            ]
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "Сверять имя игрока в CRM перед обращением",
+            "kind": "coaching",
+            "message_refs": [
+              "D029#1"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "dialog_id": "D030",
+      "player_id": "P1030",
+      "manager_id": "Tom",
+      "analysis": {
+        "profile": {
+          "summary": "Регулярный VIP-игрок, депозиты стабильны."
+        },
+        "quality": {
+          "tone": 88,
+          "empathy": 85,
+          "engagement": 88,
+          "personalization": 85,
+          "problem_understanding": 92,
+          "completeness": 90,
+          "follow_up": 85,
+          "next_steps_clarity": 88,
+          "overall": 88,
+          "summary": "Быстро вернул бонус на тех же условиях и выразил понимание."
+        },
+        "player_points": [
+          {
+            "message_id": "D030#1",
+            "dissatisfaction": 40,
+            "state": "disappointment"
+          },
+          {
+            "message_id": "D030#3",
+            "dissatisfaction": 10,
+            "state": "resolved"
+          }
+        ],
+        "manager_points": [
+          {
+            "message_id": "D030#2",
+            "engagement": 90
+          }
+        ],
+        "rg": {
+          "signal": "none",
+          "handled": "not_applicable",
+          "message_refs": []
+        },
+        "risk_flags": [],
+        "violations": [],
+        "recommendations": []
+      }
+    },
+    {
+      "dialog_id": "D031",
+      "player_id": "P1031",
+      "manager_id": "Алина",
+      "analysis": {
+        "profile": {
+          "summary": "Депозиты выросли на 71% (с низкой базы $700)."
+        },
+        "quality": {
+          "tone": 70,
+          "empathy": 50,
+          "engagement": 40,
+          "personalization": 55,
+          "problem_understanding": 30,
+          "completeness": 20,
+          "follow_up": 15,
+          "next_steps_clarity": 15,
+          "overall": 40,
+          "summary": "Просьба о фидбеке была проактивной, но полезный отзыв получил лишь «спасибо» без фиксации."
+        },
+        "player_points": [
+          {
+            "message_id": "D031#2",
+            "dissatisfaction": 25,
+            "state": "neutral"
+          }
+        ],
+        "manager_points": [
+          {
+            "message_id": "D031#1",
+            "engagement": 60
+          },
+          {
+            "message_id": "D031#3",
+            "engagement": 25
+          }
+        ],
+        "rg": {
+          "signal": "none",
+          "handled": "not_applicable",
+          "message_refs": []
+        },
+        "risk_flags": [],
+        "violations": [
+          {
+            "title": "Отзыв игрока не зафиксирован",
+            "category": "communication",
+            "code": "NO_FOLLOW_UP",
+            "severity": "low",
+            "explanation": "Полезный отзыв получил только «спасибо» без передачи в продукт.",
+            "message_refs": [
+              "D031#3"
+            ]
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "Передать отзыв (медленная загрузка раздела, нет поиска по провайдеру) в продукт",
+            "kind": "service",
+            "message_refs": [
+              "D031#2"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "dialog_id": "D032",
+      "player_id": "P1032",
+      "manager_id": "Emily",
+      "analysis": {
+        "profile": {
+          "summary": "Регулярный VIP-игрок, депозиты стабильны. Сообщает о переезде в другую провинцию."
+        },
+        "quality": {
+          "tone": 80,
+          "empathy": 70,
+          "engagement": 65,
+          "personalization": 70,
+          "problem_understanding": 55,
+          "completeness": 40,
+          "follow_up": 40,
+          "next_steps_clarity": 50,
+          "overall": 42,
+          "summary": "Тёплый ответ, но заверение «ничего не изменится» дано без проверки ограничений нового региона."
+        },
+        "player_points": [
+          {
+            "message_id": "D032#1",
+            "dissatisfaction": 5,
+            "state": "neutral"
+          },
+          {
+            "message_id": "D032#3",
+            "dissatisfaction": 10,
+            "state": "positive"
+          }
+        ],
+        "manager_points": [
+          {
+            "message_id": "D032#2",
+            "engagement": 60
+          }
+        ],
+        "rg": {
+          "signal": "none",
+          "handled": "not_applicable",
+          "message_refs": []
+        },
+        "risk_flags": [],
+        "violations": [
+          {
+            "title": "Заверение без проверки ограничений нового региона",
+            "category": "operational",
+            "code": "COMPLIANCE_RISK",
+            "severity": "high",
+            "explanation": "Менеджер сказал «ничего не изменится» при переезде в другую провинцию, не проверив лицензионные ограничения.",
+            "message_refs": [
+              "D032#2"
+            ]
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "Проверить с compliance возможность обслуживать игрока в Торонто и сообщить ему",
+            "kind": "service",
+            "message_refs": [
+              "D032#2"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "dialog_id": "D033",
+      "player_id": "P1033",
+      "manager_id": "Ольга",
+      "analysis": {
+        "profile": {
+          "summary": "Частота депозитов выросла с 8 до 17, сумма выросла на 39%."
+        },
+        "quality": {
+          "tone": 65,
+          "empathy": 35,
+          "engagement": 35,
+          "personalization": 40,
+          "problem_understanding": 20,
+          "completeness": 50,
+          "follow_up": 30,
+          "next_steps_clarity": 40,
+          "overall": 28,
+          "summary": "Вывод отменён и выдан бонус по просьбе игрока без проверки. Повторная просьба после потери баланса осталась без ответа."
+        },
+        "player_points": [
+          {
+            "message_id": "D033#1",
+            "dissatisfaction": 25,
+            "state": "neutral"
+          },
+          {
+            "message_id": "D033#3",
+            "dissatisfaction": 10,
+            "state": "positive"
+          },
+          {
+            "message_id": "D033#4",
+            "dissatisfaction": 50,
+            "state": "disappointment"
+          }
+        ],
+        "manager_points": [
+          {
+            "message_id": "D033#2",
+            "engagement": 40
+          }
+        ],
+        "rg": {
+          "signal": "none",
+          "handled": "not_applicable",
+          "message_refs": []
+        },
+        "risk_flags": [],
+        "violations": [
+          {
+            "title": "Отмена вывода и бонус по просьбе игрока",
+            "category": "operational",
+            "code": "COMPLIANCE_RISK",
+            "severity": "high",
+            "explanation": "Менеджер отменил вывод и сразу начислил бонус, чтобы игрок продолжил играть.",
+            "message_refs": [
+              "D033#2"
+            ]
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "Не начислять новый бонус по повторной просьбе игрока",
+            "kind": "service",
+            "message_refs": [
+              "D033#4"
+            ]
+          },
+          {
+            "text": "Проверить аккаунт по регламенту: отмена вывода, рост числа депозитов, потеря баланса",
+            "kind": "service",
+            "message_refs": [
+              "D033#2",
+              "D033#4"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "dialog_id": "D034",
+      "player_id": "P1034",
+      "manager_id": "Максим",
+      "analysis": {
+        "profile": {
+          "summary": "Крупный VIP-игрок: депозиты $11 200, выросли на 26%."
+        },
+        "quality": {
+          "tone": 90,
+          "empathy": 80,
+          "engagement": 88,
+          "personalization": 90,
+          "problem_understanding": 85,
+          "completeness": null,
+          "follow_up": null,
+          "next_steps_clarity": null,
+          "overall": 86,
+          "summary": "Живое общение в тоне игрока, уместный small talk без давления."
+        },
+        "player_points": [
+          {
+            "message_id": "D034#1",
+            "dissatisfaction": 5,
+            "state": "positive"
+          },
+          {
+            "message_id": "D034#3",
+            "dissatisfaction": 5,
+            "state": "positive"
+          }
+        ],
+        "manager_points": [
+          {
+            "message_id": "D034#2",
+            "engagement": 85
+          },
+          {
+            "message_id": "D034#4",
+            "engagement": 80
+          }
+        ],
+        "rg": {
+          "signal": "none",
+          "handled": "not_applicable",
+          "message_refs": []
+        },
+        "risk_flags": [],
+        "violations": [],
+        "recommendations": []
+      }
+    },
+    {
+      "dialog_id": "D035",
+      "player_id": "P1035",
+      "manager_id": "Tom",
+      "analysis": {
+        "profile": {
+          "summary": "Регулярный VIP-игрок, депозиты стабильны."
+        },
+        "quality": {
+          "tone": 65,
+          "empathy": 55,
+          "engagement": 50,
+          "personalization": 45,
+          "problem_understanding": 55,
+          "completeness": 60,
+          "follow_up": 40,
+          "next_steps_clarity": 50,
+          "overall": 60,
+          "summary": "Корректно сообщил об ограничении канала и спросил, чем помочь. Игрок отказался от темы."
+        },
+        "player_points": [
+          {
+            "message_id": "D035#1",
+            "dissatisfaction": 20,
+            "state": "neutral"
+          },
+          {
+            "message_id": "D035#3",
+            "dissatisfaction": 35,
+            "state": "detachment"
+          }
+        ],
+        "manager_points": [
+          {
+            "message_id": "D035#2",
+            "engagement": 60
+          }
+        ],
+        "rg": {
+          "signal": "none",
+          "handled": "not_applicable",
+          "message_refs": []
+        },
+        "risk_flags": [],
+        "violations": [],
+        "recommendations": [
+          {
+            "text": "Уточнить позже, о чём игрок хотел поговорить",
+            "kind": "service",
+            "message_refs": [
+              "D035#3"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "dialog_id": "D036",
+      "player_id": "P1036",
+      "manager_id": "Алина",
+      "analysis": {
+        "profile": {
+          "summary": "Депозиты упали на 50%."
+        },
+        "quality": {
+          "tone": 50,
+          "empathy": null,
+          "engagement": 18,
+          "personalization": 25,
+          "problem_understanding": 10,
+          "completeness": null,
+          "follow_up": 20,
+          "next_steps_clarity": null,
+          "overall": 30,
+          "summary": "Три сообщения подряд с давлением на депозит, одно из них ночью, без ответа игрока."
+        },
+        "player_points": [],
+        "manager_points": [
+          {
+            "message_id": "D036#1",
+            "engagement": 35
+          },
+          {
+            "message_id": "D036#2",
+            "engagement": 15
+          },
+          {
+            "message_id": "D036#3",
+            "engagement": 15
+          }
+        ],
+        "rg": {
+          "signal": "none",
+          "handled": "not_applicable",
+          "message_refs": []
+        },
+        "risk_flags": [],
+        "violations": [
+          {
+            "title": "Навязчивые сообщения о депозите без ответа игрока",
+            "category": "communication",
+            "code": "PERSONALIZATION_ERROR",
+            "severity": "medium",
+            "explanation": "Три сообщения подряд, одно ночью, с вопросом о сумме депозита и давлением.",
+            "message_refs": [
+              "D036#1",
+              "D036#2",
+              "D036#3"
+            ]
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "Не писать повторно до ответа, личным сообщением узнать причину снижения активности",
+            "kind": "service",
+            "message_refs": [
+              "D036#3"
+            ]
+          },
+          {
+            "text": "Не торопить игрока с депозитом",
+            "kind": "coaching",
+            "message_refs": [
+              "D036#1",
+              "D036#2"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "dialog_id": "D037",
+      "player_id": "P1037",
+      "manager_id": "Emily",
+      "analysis": {
+        "profile": {
+          "summary": "Регулярный VIP-игрок, депозиты стабильны."
+        },
+        "quality": {
+          "tone": 92,
+          "empathy": 85,
+          "engagement": 85,
+          "personalization": 85,
+          "problem_understanding": null,
+          "completeness": null,
+          "follow_up": null,
+          "next_steps_clarity": null,
+          "overall": 88,
+          "summary": "Вовремя и тепло поздравил, подарок без вейджера."
+        },
+        "player_points": [
+          {
+            "message_id": "D037#2",
+            "dissatisfaction": 5,
+            "state": "positive"
+          }
+        ],
+        "manager_points": [
+          {
+            "message_id": "D037#1",
+            "engagement": 88
+          }
+        ],
+        "rg": {
+          "signal": "none",
+          "handled": "not_applicable",
+          "message_refs": []
+        },
+        "risk_flags": [],
+        "violations": [],
+        "recommendations": []
+      }
+    },
+    {
+      "dialog_id": "D038",
+      "player_id": "P1038",
+      "manager_id": "Ольга",
+      "analysis": {
+        "profile": {
+          "summary": "Регулярный VIP-игрок, депозиты стабильны."
+        },
+        "quality": {
+          "tone": 92,
+          "empathy": 92,
+          "engagement": 90,
+          "personalization": 85,
+          "problem_understanding": 92,
+          "completeness": 92,
+          "follow_up": 92,
+          "next_steps_clarity": 90,
+          "overall": 92,
+          "summary": "Признал проблему, собрал данные, передал руководителю и сообщил итог по выводу."
+        },
+        "player_points": [
+          {
+            "message_id": "D038#1",
+            "dissatisfaction": 60,
+            "state": "irritation"
+          },
+          {
+            "message_id": "D038#3",
+            "dissatisfaction": 25,
+            "state": "neutral"
+          },
+          {
+            "message_id": "D038#5",
+            "dissatisfaction": 10,
+            "state": "resolved"
+          }
+        ],
+        "manager_points": [
+          {
+            "message_id": "D038#2",
+            "engagement": 92
+          },
+          {
+            "message_id": "D038#4",
+            "engagement": 90
+          }
+        ],
+        "rg": {
+          "signal": "none",
+          "handled": "not_applicable",
+          "message_refs": []
+        },
+        "risk_flags": [],
+        "violations": [],
+        "recommendations": []
+      }
+    },
+    {
+      "dialog_id": "D039",
+      "player_id": "P1039",
+      "manager_id": "Максим",
+      "analysis": {
+        "profile": {
+          "summary": "Регулярный VIP-игрок, депозиты стабильны."
+        },
+        "quality": {
+          "tone": 90,
+          "empathy": null,
+          "engagement": 88,
+          "personalization": 75,
+          "problem_understanding": 95,
+          "completeness": 95,
+          "follow_up": null,
+          "next_steps_clarity": 90,
+          "overall": 90,
+          "summary": "Точное и понятное объяснение расчёта кешбэка."
+        },
+        "player_points": [
+          {
+            "message_id": "D039#1",
+            "dissatisfaction": 10,
+            "state": "neutral"
+          },
+          {
+            "message_id": "D039#3",
+            "dissatisfaction": 5,
+            "state": "positive"
+          }
+        ],
+        "manager_points": [
+          {
+            "message_id": "D039#2",
+            "engagement": 90
+          }
+        ],
+        "rg": {
+          "signal": "none",
+          "handled": "not_applicable",
+          "message_refs": []
+        },
+        "risk_flags": [],
+        "violations": [],
+        "recommendations": []
+      }
+    },
+    {
+      "dialog_id": "D040",
+      "player_id": "P1040",
+      "manager_id": "Tom",
+      "analysis": {
+        "profile": {
+          "summary": "Депозиты упали на 63%, установлен депозитный лимит."
+        },
+        "quality": {
+          "tone": 55,
+          "empathy": 30,
+          "engagement": 20,
+          "personalization": 45,
+          "problem_understanding": 20,
+          "completeness": 50,
+          "follow_up": 20,
+          "next_steps_clarity": 40,
+          "overall": 20,
+          "summary": "Акция предложена игроку с установленным лимитом, менеджер намекнул, что лимит можно повысить."
+        },
+        "player_points": [
+          {
+            "message_id": "D040#2",
+            "dissatisfaction": 60,
+            "state": "irritation"
+          }
+        ],
+        "manager_points": [
+          {
+            "message_id": "D040#1",
+            "engagement": 20
+          }
+        ],
+        "rg": {
+          "signal": "none",
+          "handled": "not_applicable",
+          "message_refs": []
+        },
+        "risk_flags": [],
+        "violations": [
+          {
+            "title": "Предложено повысить лимит, который игрок поставил сам",
+            "category": "operational",
+            "code": "BONUS_RULE_BREACH",
+            "severity": "high",
+            "explanation": "Менеджер предложил акцию и намекнул, что лимит можно повысить в любой момент.",
+            "message_refs": [
+              "D040#1"
+            ]
+          }
+        ],
+        "recommendations": [
+          {
+            "text": "Не предлагать повышение лимита и не присылать акции игроку с лимитом без его запроса",
+            "kind": "coaching",
+            "message_refs": [
+              "D040#1"
+            ]
+          },
+          {
+            "text": "Извиниться и подтвердить, что лимит останется без изменений",
+            "kind": "service",
+            "message_refs": [
+              "D040#2"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

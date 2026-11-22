@@ -12,6 +12,10 @@ results/
 /dialogs.json
 /players.csv
 /analysis_results.json
+# демо-файлы в sample/ входят в репозиторий
 cache/
 *.docx
 CLAUDE.md
+
+# тесты не входят в репозиторий
+tests/

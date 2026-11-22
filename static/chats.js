@@ -7,13 +7,23 @@
   };
   const st = { items: [], sel: null, detail: null, chart: null, job: null, poll: null, search: "", meta: {}, data: null,
     mode: ls.get("mode", "ai"), up: { dialogs: null, players: null }, upCheck: null, imp: null, impCheck: null,
-    settings: null, cost: null, open: ls.get("open", "") === "1" };
+    settings: null, cost: null, open: ls.get("open", "") === "1", group: ls.get("group", "none") };
   st.sel = ls.get("sel", "") || null;
   const setOpen = (v) => { st.open = v; ls.set("open", v ? "1" : "0"); };
   // пока анализ не открыт (localStorage пуст), показываем пустой Dashboard, серверные результаты не затрагиваются
   const BLANK = { analysis_status: "missing", stale_reasons: [], priority: null, overall: null, violations: null, source: null, rg_signal: null };
   const RANK = { critical: 0, high: 1, medium: 2, low: 3 };
-  const sorted = () => [...st.items].sort((a, b) => (RANK[a.priority] ?? 4) - (RANK[b.priority] ?? 4) || a.dialog_id.localeCompare(b.dialog_id));
+  const byId = (a, b) => a.dialog_id.localeCompare(b.dialog_id);
+  const STATUS_L = { fresh: "Актуальный анализ", stale: "Анализ устарел", missing: "Нет анализа" };
+  const GROUPS = {
+    none: ["Без группировки", null],
+    priority: ["По приоритету", (i) => [i.priority ? PRIORITY[i.priority]?.[0] || i.priority : "Не проанализирован", RANK[i.priority] ?? 4]],
+    manager: ["По менеджеру", (i) => [i.manager, i.manager]],
+    channel: ["По каналу", (i) => [i.channel, i.channel]],
+    player: ["По игроку", (i) => [i.player_id, i.player_id]],
+    status: ["По статусу анализа", (i) => [STATUS_L[i.analysis_status] || i.analysis_status, i.analysis_status]],
+  };
+  const sorted = () => [...st.items].sort((a, b) => (RANK[a.priority] ?? 4) - (RANK[b.priority] ?? 4) || byId(a, b));
 
   window.pages.chats = async (dialogId) => {
     const first = !$("#chats-root");
@@ -217,8 +227,11 @@
   function renderTab() {
     const body = $("#tabbody"); if (!body) return;
     destroyChart();
-    body.innerHTML = `<div class="layout"><div class="card list"><input type="text" id="search" placeholder="Поиск" value="${esc(st.search)}"><div id="list"></div></div><div id="detail"></div></div>`;
+    body.innerHTML = `<div class="layout"><div class="card list"><input type="text" id="search" placeholder="Поиск" value="${esc(st.search)}">
+      <div class="ctl"><select id="group" title="Группировка">${Object.entries(GROUPS).map(([k, v]) => `<option value="${k}" ${k === st.group ? "selected" : ""}>${v[0]}</option>`).join("")}</select></div>
+      <div id="list"></div></div><div id="detail"></div></div>`;
     $("#search").addEventListener("input", (e) => { st.search = e.target.value.toLowerCase(); renderList(); });
+    $("#group").addEventListener("change", (e) => { st.group = e.target.value; ls.set("group", st.group); renderList(); });
     renderList();
     if (st.detail) renderDetail();
     if (!st.items.length) $("#detail").innerHTML = '<div class="banner">Загрузите dialogs.json и players.csv</div>';
@@ -227,12 +240,22 @@
   function renderList() {
     const box = $("#list"); if (!box) return;
     const q = st.search;
-    box.innerHTML = sorted().filter((i) => !q || `${i.player_id} ${i.dialog_id} ${i.manager}`.toLowerCase().includes(q)).map((i) => `
+    const rows = sorted().filter((i) => !q || `${i.player_id} ${i.dialog_id} ${i.manager}`.toLowerCase().includes(q));
+    const item = (i) => `
       <div class="item ${i.dialog_id === st.sel ? "sel" : ""}" data-id="${i.dialog_id}">
         <span class="dot ${i.priority || ""}" title="${esc(PRIORITY[i.priority]?.[0] || "Не проанализирован")}"></span>
         <div><div class="t">${chIcon(i.channel)} ${esc(i.player_id)} <span class="m">${esc(i.dialog_id)}</span></div>
-        <div class="m">${esc(i.manager)}${i.analysis_status === "stale" ? ` · <span style="color:var(--amber)">${esc(i.stale_reasons.map((r) => r.label).join(", "))}</span>` : ""}${i.analysis_status === "missing" ? " · нет анализа" : ""}</div></div>
-      </div>`).join("");
+        <div class="m">${esc(i.manager)}${i.overall != null ? ` · оценка ${i.overall}` : ""}${i.analysis_status === "stale" ? ` · <span style="color:var(--amber)">${esc(i.stale_reasons.map((r) => r.label).join(", "))}</span>` : ""}${i.analysis_status === "missing" ? " · нет анализа" : ""}</div></div>
+      </div>`;
+    const gf = GROUPS[st.group]?.[1];
+    if (!gf) box.innerHTML = rows.map(item).join("");
+    else {
+      const g = new Map();
+      for (const i of rows) { const [label, key] = gf(i); if (!g.has(label)) g.set(label, { key, items: [] }); g.get(label).items.push(i); }
+      const ordered = [...g.entries()].sort((x, y) => (typeof x[1].key === "number" ? x[1].key - y[1].key : String(x[1].key).localeCompare(String(y[1].key))));
+      box.innerHTML = ordered.map(([label, v]) => `<div class="grp">${esc(label)} <span>${v.items.length}</span></div>${v.items.map(item).join("")}`).join("");
+    }
+    if (!rows.length && st.items.length) box.innerHTML = '<div class="muted small" style="padding:8px">Ничего не найдено</div>';
     box.querySelectorAll(".item").forEach((el) => el.addEventListener("click", () => { location.hash = "#/dialog/" + el.dataset.id; }));
   }
 
